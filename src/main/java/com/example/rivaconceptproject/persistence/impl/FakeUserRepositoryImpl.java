@@ -52,4 +52,9 @@ public class FakeUserRepositoryImpl implements UserRepository {
                 .filter(userEntity -> userEntity.getId().equals(userId))
                 .findFirst();
     }
+
+    @Override
+    public int count() {
+        return this.savedUsers.size();
+    }
 }
