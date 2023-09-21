@@ -17,6 +17,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateUserRequest {
+    @NotNull
+    private Long id;
+
     @NotBlank
     private String firstName;
 
