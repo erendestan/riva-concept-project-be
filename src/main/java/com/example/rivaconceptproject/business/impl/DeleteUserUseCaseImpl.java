@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class DeleteUserUseCaseImpl implements DeleteUserUseCase {
     private final UserRepository userRepository;
     @Override
-    public void deleteStudent(long userId) {
+    public void deleteUser(long userId) {
         this.userRepository.deleteById(userId);
     }
 }
