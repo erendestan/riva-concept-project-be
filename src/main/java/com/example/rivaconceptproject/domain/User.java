@@ -11,14 +11,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    private Long id;
+    private long id;
 
     private String firstName;
 
     private String lastName;
 
     private String email;
-    private Long phoneNumber;
+
+    private long phoneNumber;
 
 //    private Date birthDate;
 
