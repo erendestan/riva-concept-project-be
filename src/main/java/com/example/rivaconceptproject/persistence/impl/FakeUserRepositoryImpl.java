@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 public class FakeUserRepositoryImpl implements UserRepository {
-    private static long NEXT_ID = 1;
+    private long NEXT_ID = 1;
 
     private final List<UserEntity> savedUsers;
 

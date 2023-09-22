@@ -4,6 +4,7 @@ import com.example.rivaconceptproject.business.DeleteUserUseCase;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,10 @@ class DeleteUserUseCaseImplTest {
                 .phoneNumber(666555111)
                 .role(Role.Worker)
                 .build());
+    }
+    @AfterEach
+    public void tearDown(){
+        userRepository.clear();
     }
 
     @Test

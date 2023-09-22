@@ -4,6 +4,7 @@ import com.example.rivaconceptproject.business.CreateUserUseCase;
 import com.example.rivaconceptproject.domain.CreateUserRequest;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,10 @@ class CreateUserUseCaseImplTest {
     CreateUserUseCase createUserUseCase;
     @BeforeEach
     public void settingUp(){
+        userRepository.clear();
+    }
+    @AfterEach
+    public void tearDown(){
         userRepository.clear();
     }
     @Test
