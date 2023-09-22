@@ -44,12 +44,12 @@ public class FakeUserRepositoryImpl implements UserRepository {
     @Override
     public void deleteById(long userId) {
 
-//        this.savedUsers.removeIf(userEntity -> userEntity.getId().equals(userId));
-        for (UserEntity user : this.savedUsers){
-            if(user.getId() == userId){
-                this.savedUsers.remove(user);
-            }
-        }
+        this.savedUsers.removeIf(userEntity -> userEntity.getId() == userId);
+//        for (UserEntity user : this.savedUsers){
+//            if(user.getId() == userId){
+//                this.savedUsers.remove(user);
+//            }
+//        }
     }
 
     @Override

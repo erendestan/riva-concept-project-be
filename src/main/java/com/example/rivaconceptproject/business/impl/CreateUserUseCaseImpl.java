@@ -34,6 +34,7 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .phoneNumber(request.getPhoneNumber())
+                .role(request.getRole())
                 .build();
         //.id(request.getId())
         //.birthDate(request.getBirthDate())
