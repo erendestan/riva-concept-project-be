@@ -4,17 +4,27 @@ import com.example.rivaconceptproject.business.CreateUserUseCase;
 import com.example.rivaconceptproject.domain.CreateUserRequest;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
-import com.example.rivaconceptproject.persistence.impl.FakeUserRepositoryImpl;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@SpringBootTest
 class CreateUserUseCaseImplTest {
-
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    CreateUserUseCase createUserUseCase;
+    @BeforeEach
+    public void settingUp(){
+        userRepository.clear();
+    }
     @Test
     void createUser_saves_newUserInToFakeDb(){
-        UserRepository userRepository = new FakeUserRepositoryImpl();
-        CreateUserUseCase createUserUseCase = new CreateUserUseCaseImpl(userRepository);
+//        UserRepository userRepository = new FakeUserRepositoryImpl();
+//        CreateUserUseCase createUserUseCase = new CreateUserUseCaseImpl(userRepository);
         CreateUserRequest request = new CreateUserRequest("Jack","Kral","jackkral@gmail.com", 555444111, Role.Worker);
         createUserUseCase.createUser(request);
         assertEquals(1, userRepository.findAllUsers().size());

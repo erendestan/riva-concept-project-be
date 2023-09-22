@@ -18,4 +18,6 @@ public interface UserRepository {
     Optional<UserEntity> findUserById(long userId);
 
     int count();
+
+    public void clear();
 }

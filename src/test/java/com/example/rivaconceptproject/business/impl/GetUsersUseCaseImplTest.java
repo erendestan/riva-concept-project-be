@@ -6,23 +6,25 @@ import com.example.rivaconceptproject.domain.User;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
-import com.example.rivaconceptproject.persistence.impl.FakeUserRepositoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class GetUsersUseCaseImplTest {
+    @Autowired
     UserRepository userRepository;
-
+    @Autowired
     GetUsersUseCase getUsersUseCase;
 
     @BeforeEach
     void settingUp(){
-        userRepository = new FakeUserRepositoryImpl();
+        userRepository.clear();
+//        userRepository = new FakeUserRepositoryImpl();
+
         userRepository.save(UserEntity.builder()
                 .firstName("Jack")
                 .lastName("Kral")
@@ -41,13 +43,13 @@ class GetUsersUseCaseImplTest {
 
     @Test
     void getProducts_shouldGetAllTheProducts(){
-        getUsersUseCase = new GetUsersUseCaseImpl(userRepository);
+//        getUsersUseCase = new GetUsersUseCaseImpl(userRepository);
         GetAllUsersResponse result = getUsersUseCase.getUsers();
         assertEquals(2, result.getUsers().size());
         assertNotNull(result);
 
         User expectedUser_1 = User.builder()
-                .id(1)
+                .id(2)
                 .firstName("Jack")
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
@@ -55,16 +57,16 @@ class GetUsersUseCaseImplTest {
                 .role(Role.Customer)
                 .build();
         User expectedUser_2 = User.builder()
-                .id(2)
+                .id(3)
                 .firstName("Edward")
                 .lastName("Ox")
                 .email("edwardox@gmail.com")
                 .phoneNumber(666555111)
                 .role(Role.Worker)
                 .build();
-        List<User> userList = new ArrayList<>();
-        userList.add(expectedUser_1);
-        userList.add(expectedUser_2);
+//        List<User> userList = new ArrayList<>();
+//        userList.add(expectedUser_1);
+//        userList.add(expectedUser_2);
         assertTrue(result.getUsers().contains(expectedUser_1));
         assertTrue(result.getUsers().contains(expectedUser_2));
     }

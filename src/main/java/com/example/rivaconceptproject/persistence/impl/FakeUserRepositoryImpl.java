@@ -69,4 +69,9 @@ public class FakeUserRepositoryImpl implements UserRepository {
     public int count() {
         return this.savedUsers.size();
     }
+
+    @Override
+    public void clear() {
+        savedUsers.clear();
+    }
 }
