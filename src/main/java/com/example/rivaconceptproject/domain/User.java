@@ -6,14 +6,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
     private Long id;
+
     private String firstName;
 
     private String lastName;
@@ -21,7 +20,7 @@ public class User {
     private String email;
     private Long phoneNumber;
 
-    private Date birthDate;
+//    private Date birthDate;
 
     private Role role;
 

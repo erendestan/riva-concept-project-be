@@ -25,7 +25,7 @@ public class UsersController {
     public ResponseEntity<User> getUser(@PathVariable(value = "id") final long id){
         final Optional<User> userOptional = getUserUseCase.getUser(id);
         if(userOptional.isEmpty()){
-            return ResponseEntity.notFound().build(); //If not found return not found as response
+            return ResponseEntity.notFound().build(); //If nothing found with that id, return not found as response
         }
         return ResponseEntity.ok().body(userOptional.get());
     }

@@ -23,7 +23,7 @@ public class FakeUserRepositoryImpl implements UserRepository {
     public boolean existsByUserId(long userId) {
         return this.savedUsers
                 .stream()
-                .anyMatch(userEntity -> userEntity.getId().equals(userId));
+                .anyMatch(userEntity -> userEntity.getId() == userId);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class FakeUserRepositoryImpl implements UserRepository {
 
     @Override
     public UserEntity save(UserEntity user) {
-        if (user.getId() == null){
+        if (user.getId() == 0){
             user.setId(NEXT_ID);
             NEXT_ID++;
             this.savedUsers.add(user);
@@ -43,14 +43,26 @@ public class FakeUserRepositoryImpl implements UserRepository {
 
     @Override
     public void deleteById(long userId) {
-        this.savedUsers.removeIf(userEntity -> userEntity.getId().equals(userId));
+
+//        this.savedUsers.removeIf(userEntity -> userEntity.getId().equals(userId));
+        for (UserEntity user : this.savedUsers){
+            if(user.getId() == userId){
+                this.savedUsers.remove(user);
+            }
+        }
     }
 
     @Override
     public Optional<UserEntity> findUserById(long userId) {
-        return this.savedUsers.stream()
-                .filter(userEntity -> userEntity.getId().equals(userId))
-                .findFirst();
+//        return this.savedUsers.stream()
+//                .filter(userEntity -> userEntity.getId().equals(userId))
+//                .findFirst();
+        for (UserEntity user : this.savedUsers){
+            if(user.getId() == userId){
+                return Optional.of(user);
+            }
+        }
+        return Optional.empty();
     }
 
     @Override

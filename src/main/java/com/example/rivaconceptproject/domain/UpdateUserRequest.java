@@ -6,10 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 @Data
 @Builder
@@ -30,9 +28,9 @@ public class UpdateUserRequest {
     @NotNull
     private Long phoneNumber;
 
-    @NotNull
-    @DateTimeFormat( pattern="yyyy-MM-dd")
-    private Date birthDate;
+//    @NotNull
+//    @DateTimeFormat( pattern="yyyy-MM-dd")
+//    private Date birthDate;
 
     @NotNull
     private Role role;
