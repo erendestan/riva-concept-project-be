@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class UpdateUserRequest {
     @NotNull
-    private Long id;
+    private long id;
     @NotBlank
     private String firstName;
 
@@ -26,7 +26,7 @@ public class UpdateUserRequest {
     private String email;
 
     @NotNull
-    private Long phoneNumber;
+    private long phoneNumber;
 
 //    @NotNull
 //    @DateTimeFormat( pattern="yyyy-MM-dd")
