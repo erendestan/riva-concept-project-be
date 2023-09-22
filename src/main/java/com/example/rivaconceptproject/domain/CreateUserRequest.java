@@ -28,7 +28,7 @@ public class CreateUserRequest {
     private String email;
 
     @NotNull
-    private Long phoneNumber;
+    private long phoneNumber;
 
 //    @NotNull
 //    @DateTimeFormat( pattern="yyyy-MM-dd")
