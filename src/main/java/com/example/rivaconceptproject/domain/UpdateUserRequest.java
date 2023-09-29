@@ -28,10 +28,6 @@ public class UpdateUserRequest {
     @NotNull
     private long phoneNumber;
 
-//    @NotNull
-//    @DateTimeFormat( pattern="yyyy-MM-dd")
-//    private Date birthDate;
-
     @NotNull
     private Role role;
 }

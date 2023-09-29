@@ -21,8 +21,6 @@ public class User {
 
     private long phoneNumber;
 
-//    private Date birthDate;
-
     private Role role;
 
 }

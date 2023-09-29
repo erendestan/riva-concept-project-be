@@ -18,14 +18,6 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
 
         return CreateUserResponse.builder()
                 .userId(user.getId()).build();
-        //        if (userRepository.existsByUserId(request.getId())){
-//            throw new IdAlreadyExistsException();
-//        }
-//        UserEntity savedUser = saveNewUser(request);
-//
-//        return CreateUserResponse.builder()
-//                .userId(savedUser.getId())
-//                .build();
     }
 
     private UserEntity saveNewUser(CreateUserRequest request){
@@ -36,8 +28,7 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
                 .phoneNumber(request.getPhoneNumber())
                 .role(request.getRole())
                 .build();
-        //.id(request.getId())
-        //.birthDate(request.getBirthDate())
+
         return userRepository.save(newUser);
     }
 }
