@@ -6,6 +6,6 @@ import org.springframework.web.server.ResponseStatusException;
 public class IdAlreadyExistsException extends ResponseStatusException {
     public IdAlreadyExistsException() {
 
-        super(HttpStatus.BAD_REQUEST, "ID_ALREADY_EXISTS");
+        super(HttpStatus.BAD_REQUEST, "USER_ALREADY_EXISTS");
     }
 }

@@ -1,6 +1,7 @@
 package com.example.rivaconceptproject.business.impl;
 
 import com.example.rivaconceptproject.business.CreateUserUseCase;
+import com.example.rivaconceptproject.business.exception.EmailAlreadyExistsException;
 import com.example.rivaconceptproject.domain.CreateUserRequest;
 import com.example.rivaconceptproject.domain.CreateUserResponse;
 import com.example.rivaconceptproject.persistence.UserRepository;
@@ -14,6 +15,10 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
     private final UserRepository userRepository;
     @Override
     public CreateUserResponse createUser(CreateUserRequest request) {
+        if (userRepository.existsByEmail(request.getEmail())){
+            throw new EmailAlreadyExistsException();
+        }
+
         UserEntity user = saveNewUser(request);
 
         return CreateUserResponse.builder()

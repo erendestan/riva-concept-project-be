@@ -9,6 +9,8 @@ public interface UserRepository {
 
     boolean existsByUserId(long userId);
 
+    boolean existsByEmail(String email);
+
     List<UserEntity> findAllUsers();
 
     UserEntity save(UserEntity user);

@@ -27,6 +27,13 @@ public class FakeUserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public boolean existsByEmail(String email) {
+        return this.savedUsers
+                .stream()
+                .anyMatch(userEntity -> userEntity.getEmail() == email);
+    }
+
+    @Override
     public List<UserEntity> findAllUsers() {
         return Collections.unmodifiableList(this.savedUsers);
     }

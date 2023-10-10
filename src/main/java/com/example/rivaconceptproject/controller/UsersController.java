@@ -13,6 +13,7 @@ import java.util.Optional;
 @RestController //Means Endpoint is defined here
 @RequestMapping("/users") //And endpoint is connected to /users
 @AllArgsConstructor
+@CrossOrigin(origins = "http://127.0.0.1:5173/")
 public class UsersController {
     //Those are injected here! Which is object of another class
     private final GetUserUseCase getUserUseCase;
