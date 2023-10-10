@@ -30,7 +30,7 @@ class CreateUserUseCaseImplTest {
     void createUser_saves_newUserInToFakeDb(){
 //        UserRepository userRepository = new FakeUserRepositoryImpl();
 //        CreateUserUseCase createUserUseCase = new CreateUserUseCaseImpl(userRepository);
-        CreateUserRequest request = new CreateUserRequest("Jack","Kral","jackkral@gmail.com", 555444111, Role.Worker);
+        CreateUserRequest request = new CreateUserRequest("Jack","Kral","jackkral@gmail.com", 555444111, "testpassword", Role.Worker);
         createUserUseCase.createUser(request);
         assertEquals(1, userRepository.findAllUsers().size());
     }
