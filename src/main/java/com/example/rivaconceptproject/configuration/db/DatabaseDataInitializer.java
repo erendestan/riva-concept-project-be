@@ -21,6 +21,7 @@ public class DatabaseDataInitializer {
                     .lastName("Destan")
                     .email("erendestan6@gmail.com")
                     .phoneNumber(31684469019L)
+                    .password("123456eren")
                     .role(Role.Admin)
                     .build());
 

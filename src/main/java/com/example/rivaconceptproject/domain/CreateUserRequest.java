@@ -31,6 +31,9 @@ public class CreateUserRequest {
     private long phoneNumber;
 
     @NotNull
+    private String password;
+
+    @NotNull
     private Role role;
 
 

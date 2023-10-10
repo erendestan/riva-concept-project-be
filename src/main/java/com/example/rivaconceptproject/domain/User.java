@@ -21,6 +21,8 @@ public class User {
 
     private long phoneNumber;
 
+    private String password;
+
     private Role role;
 
 }

@@ -33,6 +33,7 @@ public class UpdateUserUseCaseImp implements UpdateUserUserCase {
             user.setLastName(request.getLastName());
             user.setEmail(request.getEmail());
             user.setPhoneNumber(request.getPhoneNumber());
+            user.setPassword(request.getPassword());
             user.setRole(request.getRole());
 
             userRepository.save(user);

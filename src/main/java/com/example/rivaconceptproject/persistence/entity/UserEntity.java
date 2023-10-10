@@ -16,5 +16,7 @@ public class UserEntity {
 
     private long phoneNumber;
 
+    private String password;
+
     private Role role;
 }
