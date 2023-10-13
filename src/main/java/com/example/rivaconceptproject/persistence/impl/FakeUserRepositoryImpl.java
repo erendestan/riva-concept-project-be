@@ -30,7 +30,7 @@ public class FakeUserRepositoryImpl implements UserRepository {
     public boolean existsByEmail(String email) {
         return this.savedUsers
                 .stream()
-                .anyMatch(userEntity -> userEntity.getEmail() == email);
+                .anyMatch(userEntity -> userEntity.getEmail().equals(email));
     }
 
     @Override
