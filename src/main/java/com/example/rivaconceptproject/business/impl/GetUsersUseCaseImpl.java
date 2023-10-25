@@ -1,8 +1,8 @@
 package com.example.rivaconceptproject.business.impl;
 
 import com.example.rivaconceptproject.business.GetUsersUseCase;
-import com.example.rivaconceptproject.domain.GetAllUsersResponse;
-import com.example.rivaconceptproject.domain.User;
+import com.example.rivaconceptproject.domain.User.GetAllUsersResponse;
+import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

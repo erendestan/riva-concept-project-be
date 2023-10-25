@@ -1,6 +1,6 @@
 package com.example.rivaconceptproject.business;
 
-import com.example.rivaconceptproject.domain.UpdateUserRequest;
+import com.example.rivaconceptproject.domain.User.UpdateUserRequest;
 
 public interface UpdateUserUserCase {
 

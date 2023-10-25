@@ -1,6 +1,6 @@
 package com.example.rivaconceptproject.business.impl;
 
-import com.example.rivaconceptproject.domain.User;
+import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import lombok.NoArgsConstructor;
 

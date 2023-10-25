@@ -1,7 +1,7 @@
 package com.example.rivaconceptproject.business;
 
-import com.example.rivaconceptproject.domain.CreateUserRequest;
-import com.example.rivaconceptproject.domain.CreateUserResponse;
+import com.example.rivaconceptproject.domain.User.CreateUserRequest;
+import com.example.rivaconceptproject.domain.User.CreateUserResponse;
 
 public interface CreateUserUseCase {
 

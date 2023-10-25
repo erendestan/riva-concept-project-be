@@ -1,7 +1,7 @@
 package com.example.rivaconceptproject.business.impl;
 
 import com.example.rivaconceptproject.business.GetUserUseCase;
-import com.example.rivaconceptproject.domain.User;
+import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;

@@ -1,7 +1,7 @@
 package com.example.rivaconceptproject.business.impl;
 
 import com.example.rivaconceptproject.business.CreateUserUseCase;
-import com.example.rivaconceptproject.domain.CreateUserRequest;
+import com.example.rivaconceptproject.domain.User.CreateUserRequest;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import org.junit.jupiter.api.AfterEach;

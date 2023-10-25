@@ -2,7 +2,7 @@ package com.example.rivaconceptproject.business.impl;
 
 import com.example.rivaconceptproject.business.UpdateUserUserCase;
 import com.example.rivaconceptproject.business.exception.InvalidUserException;
-import com.example.rivaconceptproject.domain.UpdateUserRequest;
+import com.example.rivaconceptproject.domain.User.UpdateUserRequest;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import lombok.AllArgsConstructor;

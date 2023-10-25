@@ -1,7 +1,7 @@
 package com.example.rivaconceptproject.controller;
 
 import com.example.rivaconceptproject.business.*;
-import com.example.rivaconceptproject.domain.*;
+import com.example.rivaconceptproject.domain.User.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
