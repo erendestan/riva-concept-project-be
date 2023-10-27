@@ -1,6 +1,6 @@
-package com.example.rivaconceptproject.business.impl;
+package com.example.rivaconceptproject.business.impl.UserUseCaseImpls;
 
-import com.example.rivaconceptproject.business.UpdateUserUserCase;
+import com.example.rivaconceptproject.business.UserUseCases.UpdateUserUserCase;
 import com.example.rivaconceptproject.business.exception.InvalidUserException;
 import com.example.rivaconceptproject.domain.User.UpdateUserRequest;
 import com.example.rivaconceptproject.persistence.UserRepository;

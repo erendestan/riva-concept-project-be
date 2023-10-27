@@ -1,6 +1,6 @@
 package com.example.rivaconceptproject.business.impl;
 
-import com.example.rivaconceptproject.business.DeleteUserUseCase;
+import com.example.rivaconceptproject.business.UserUseCases.DeleteUserUseCase;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;

@@ -1,6 +1,6 @@
-package com.example.rivaconceptproject.business.impl;
+package com.example.rivaconceptproject.business.impl.UserUseCaseImpls;
 
-import com.example.rivaconceptproject.business.GetUsersUseCase;
+import com.example.rivaconceptproject.business.UserUseCases.GetUsersUseCase;
 import com.example.rivaconceptproject.domain.User.GetAllUsersResponse;
 import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.persistence.UserRepository;

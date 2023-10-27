@@ -1,6 +1,6 @@
-package com.example.rivaconceptproject.business.impl;
+package com.example.rivaconceptproject.business.impl.UserUseCaseImpls;
 
-import com.example.rivaconceptproject.business.DeleteUserUseCase;
+import com.example.rivaconceptproject.business.UserUseCases.DeleteUserUseCase;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.business;
+package com.example.rivaconceptproject.business.UserUseCases;
 
 import com.example.rivaconceptproject.domain.User.UpdateUserRequest;
 

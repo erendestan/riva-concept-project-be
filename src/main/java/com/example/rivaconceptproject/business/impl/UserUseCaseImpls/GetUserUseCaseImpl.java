@@ -1,6 +1,6 @@
-package com.example.rivaconceptproject.business.impl;
+package com.example.rivaconceptproject.business.impl.UserUseCaseImpls;
 
-import com.example.rivaconceptproject.business.GetUserUseCase;
+import com.example.rivaconceptproject.business.UserUseCases.GetUserUseCase;
 import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import lombok.AllArgsConstructor;
