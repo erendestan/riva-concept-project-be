@@ -1,7 +1,6 @@
 package com.example.rivaconceptproject.persistence;
 
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
-import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,7 +12,7 @@ public interface ReservationRepository {
 
     List<ReservationEntity> findAllReservations();
 
-    ReservationEntity save(ResponseEntity reservation);
+    ReservationEntity save(ReservationEntity reservation);
 
     void deleteByReservationId(long reservationId);
 
