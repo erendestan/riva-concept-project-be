@@ -7,5 +7,5 @@ import java.util.Optional;
 public interface GetReservationUseCase {
     Optional<Reservation> getReservation(long reservationId);
 
-//    Optional<Reservation> getReservationByUserId(long userId);
+    Optional<Reservation> getReservationByUserId(long userId);
 }
