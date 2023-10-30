@@ -1,5 +1,6 @@
 package com.example.rivaconceptproject.domain.User;
 
+import com.example.rivaconceptproject.domain.Reservation.Reservation;
 import com.example.rivaconceptproject.domain.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,4 +26,5 @@ public class User {
 
     private Role role;
 
+    private Reservation reservation;
 }

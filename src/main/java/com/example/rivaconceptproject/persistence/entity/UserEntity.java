@@ -1,5 +1,6 @@
 package com.example.rivaconceptproject.persistence.entity;
 
+import com.example.rivaconceptproject.domain.Reservation.Reservation;
 import com.example.rivaconceptproject.domain.enums.Role;
 import lombok.Builder;
 import lombok.Data;
@@ -19,4 +20,6 @@ public class UserEntity {
     private String password;
 
     private Role role;
+
+    private Reservation reservation;
 }

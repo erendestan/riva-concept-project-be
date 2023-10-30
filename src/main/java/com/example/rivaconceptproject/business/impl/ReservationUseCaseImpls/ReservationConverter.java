@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReservationConverter {
 
+    //ReservationEntity to reservation
     public static Reservation convert(ReservationEntity reservation){
         return Reservation.builder()
                 .reservationId(reservation.getReservationId())
