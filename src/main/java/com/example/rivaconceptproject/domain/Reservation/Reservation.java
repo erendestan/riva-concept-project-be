@@ -15,7 +15,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 public class Reservation {
     private long reservationId;
-    private long userId;
+    private long userId; //Change it to your User object
     private Event eventType;
     private LocalDateTime reservationCreatedDate;
     private LocalDateTime reservationDate;

@@ -26,5 +26,5 @@ public class User {
 
     private Role role;
 
-    private Reservation reservation;
+    private Reservation reservation; //List of reservations
 }
