@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -26,5 +28,5 @@ public class User {
 
     private Role role;
 
-    private Reservation reservation; //List of reservations
+    private List<Reservation> reservation; //List of reservations
 }

@@ -1,8 +1,11 @@
 package com.example.rivaconceptproject.business.impl.UserUseCaseImpls;
 
+import com.example.rivaconceptproject.domain.Reservation.Reservation;
 import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @NoArgsConstructor
 public class UserConverter {
@@ -27,7 +30,7 @@ public class UserConverter {
                 .phoneNumber(user.getPhoneNumber())
                 .password(user.getPassword())
                 .role(user.getRole())
-                .reservation(user.getReservation())
+                .reservation((List<Reservation>) user.getReservation())
                 .build();
         //.birthDate(user.getBirthDate())
         //.reservation(user.getReservation())

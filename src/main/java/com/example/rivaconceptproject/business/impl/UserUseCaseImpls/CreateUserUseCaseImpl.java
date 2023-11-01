@@ -4,6 +4,7 @@ import com.example.rivaconceptproject.business.UserUseCases.CreateUserUseCase;
 import com.example.rivaconceptproject.business.exception.EmailAlreadyExistsException;
 import com.example.rivaconceptproject.domain.User.CreateUserRequest;
 import com.example.rivaconceptproject.domain.User.CreateUserResponse;
+import com.example.rivaconceptproject.persistence.ReservationRepository;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CreateUserUseCaseImpl implements CreateUserUseCase {
     private final UserRepository userRepository;
+    private final ReservationRepository reservationRepository;
     @Override
     public CreateUserResponse createUser(CreateUserRequest request) {
         if (userRepository.existsByEmail(request.getEmail())){
