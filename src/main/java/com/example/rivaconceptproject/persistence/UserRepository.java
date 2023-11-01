@@ -18,7 +18,7 @@ public interface UserRepository {
     void deleteById(long userId);
 
     Optional<UserEntity> findUserById(long userId);
-
+    UserEntity getId(long userId);
     int count();
 
     public void clear();

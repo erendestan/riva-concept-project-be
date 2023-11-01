@@ -11,7 +11,8 @@ import java.time.LocalTime;
 @Builder
 public class ReservationEntity {
     private long reservationId;
-    private long userId;
+//    private long userId;
+    private UserEntity user;
     private Event eventType;
     private LocalDateTime reservationCreatedDate;
     private LocalDateTime reservationDate;

@@ -60,7 +60,7 @@ public class FakeReservationRepositoryImpl implements ReservationRepository {
     @Override
     public Optional<ReservationEntity> findReservationByUserId(long userId) {
         for(ReservationEntity reservation : this.savedReservations){
-            if(reservation.getUserId() == userId){
+            if(reservation.getUser().getId() == userId){
                 return Optional.of(reservation);
             }
         }

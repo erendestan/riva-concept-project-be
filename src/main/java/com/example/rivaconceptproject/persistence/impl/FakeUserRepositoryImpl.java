@@ -73,6 +73,16 @@ public class FakeUserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public UserEntity getId(long userId) {
+        for (UserEntity user : this.savedUsers){
+            if(user.getId() == userId){
+                return user;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public int count() {
         return this.savedUsers.size();
     }

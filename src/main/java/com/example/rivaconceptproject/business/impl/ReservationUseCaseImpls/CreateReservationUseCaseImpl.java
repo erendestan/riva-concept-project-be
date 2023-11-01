@@ -5,7 +5,9 @@ import com.example.rivaconceptproject.business.exception.ReservationDateTakenExc
 import com.example.rivaconceptproject.domain.Reservation.CreateReservationRequest;
 import com.example.rivaconceptproject.domain.Reservation.CreateReservationResponse;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
+import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
+import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
     private final ReservationRepository reservationRepository;
+    private final UserRepository userRepository;
     @Override
     public CreateReservationResponse createReservation(CreateReservationRequest request) {
         if (reservationRepository.existsByDateTime(request.getReservationDate())){
@@ -23,7 +26,8 @@ public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
 
         return CreateReservationResponse.builder().
                 reservationId(reservation.getReservationId())
-                .userId(reservation.getUserId())
+//                .userId(reservation.getUserId())
+                .userId(reservation.getUser().getId())
                 .reservationDate(reservation.getReservationDate())
                 .startTime(reservation.getStartTime())
                 .endTime(reservation.getEndTime())
@@ -31,8 +35,10 @@ public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
     }
 
     private ReservationEntity saveNewReservation(CreateReservationRequest request){
+        UserEntity userEntity = userRepository.getId(request.getUserId());
         ReservationEntity newReservation = ReservationEntity.builder()
-                .userId(request.getUserId())
+//                .userId(request.getUserId())
+                .user(userEntity)
                 .eventType(request.getEventType())
                 .reservationCreatedDate(request.getReservationCreatedDate())
                 .reservationDate(request.getReservationDate())

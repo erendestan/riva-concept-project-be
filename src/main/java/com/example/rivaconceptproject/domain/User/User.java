@@ -1,13 +1,11 @@
 package com.example.rivaconceptproject.domain.User;
 
-import com.example.rivaconceptproject.domain.Reservation.Reservation;
 import com.example.rivaconceptproject.domain.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @Builder
@@ -24,9 +22,12 @@ public class User {
 
     private long phoneNumber;
 
+    @JsonIgnore
     private String password;
 
+    @JsonIgnore
     private Role role;
 
-    private List<Reservation> reservation; //List of reservations
+//    @JsonIgnore
+//    private List<Reservation> reservation; //List of reservations
 }

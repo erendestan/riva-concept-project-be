@@ -4,7 +4,9 @@ import com.example.rivaconceptproject.business.ReservationUseCases.UpdateReserva
 import com.example.rivaconceptproject.business.exception.InvalidReservationException;
 import com.example.rivaconceptproject.domain.Reservation.UpdateReservationRequest;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
+import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
+import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UpdateReservationUseCaseImpl implements UpdateReservationUseCase {
    private final ReservationRepository reservationRepository;
+   private final UserRepository userRepository;
     @Override
     public void updateReservation(UpdateReservationRequest request) {
         Optional<ReservationEntity> reservationOptional = reservationRepository.findReservationById(request.getReservationId());
@@ -29,8 +32,11 @@ public class UpdateReservationUseCaseImpl implements UpdateReservationUseCase {
     private void updateFields(UpdateReservationRequest request, ReservationEntity reservation){
         Optional reservationIdOptional = reservationRepository.findReservationById(request.getReservationId());
 
+        UserEntity userEntity = userRepository.getId(request.getUserId());
+
         if(reservationIdOptional.isPresent()){
-            reservation.setUserId(request.getUserId());
+//            reservation.setUserId(request.getUserId());
+            reservation.setUser(userEntity);
             reservation.setEventType(request.getEventType());
             reservation.setReservationCreatedDate(request.getReservationCreatedDate());
             reservation.setReservationDate(request.getReservationDate());

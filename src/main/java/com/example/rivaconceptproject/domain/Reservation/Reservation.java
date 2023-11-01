@@ -1,5 +1,6 @@
 package com.example.rivaconceptproject.domain.Reservation;
 
+import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.domain.enums.Event;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,12 +16,13 @@ import java.time.LocalTime;
 @AllArgsConstructor
 public class Reservation {
     private long reservationId;
-    private long userId; //Change it to your User object
+    private User user;
+//    private long userId; //Change it to your User object
     private Event eventType;
     private LocalDateTime reservationCreatedDate;
     private LocalDateTime reservationDate;
     private LocalTime startTime;
     private LocalTime endTime;
-//    private User user;
+
 
 }
