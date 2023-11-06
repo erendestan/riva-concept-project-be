@@ -4,8 +4,7 @@ variables:
 stages:
   - build
   - test
-  - sonarqube-check
-  - sonarqube-vulnerability-report
+  - sonarqube
 
 build:
   stage: build
@@ -17,6 +16,10 @@ test:
   script:
     - ./gradlew test
 
+sonarqube:
+  stage: sonarqube
+  script:
+    - ./gradlew sonar
 #sonar:
 #  stage: sonar
 #  script:
