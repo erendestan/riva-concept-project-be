@@ -26,7 +26,7 @@ public class UpdateUserRequest {
     private String email;
 
     @NotNull
-    private long phoneNumber;
+    private String phoneNumber;
 
     @NotNull String password;
 

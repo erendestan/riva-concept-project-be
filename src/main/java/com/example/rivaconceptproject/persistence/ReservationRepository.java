@@ -9,18 +9,19 @@ import java.util.Optional;
 
 public interface ReservationRepository extends JpaRepository<ReservationEntity, Long> {
 
-    boolean existsByDateTime(LocalDateTime reservationDateTime);
+    boolean existsByReservationDate(LocalDateTime reservationDate);
 
-    List<ReservationEntity> findAllReservations();
+    //findAllReservations
+    List<ReservationEntity> findAll();
 
     ReservationEntity save(ReservationEntity reservation);
 
     void deleteByReservationId(long reservationId);
 
-    Optional<ReservationEntity> findReservationById(long reservationId);
+    Optional<ReservationEntity> findReservationByReservationId(long reservationId);
     Optional<ReservationEntity> findReservationByUserId(long userId);
 
     long count();
 
-    public void clear();
+//    public void clear();
 }

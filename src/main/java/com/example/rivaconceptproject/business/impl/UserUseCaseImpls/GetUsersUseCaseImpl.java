@@ -18,7 +18,7 @@ public class GetUsersUseCaseImpl implements GetUsersUseCase {
     @Transactional
     @Override
     public GetAllUsersResponse getUsers() {
-        List<User> users = userRepository.findAllUsers()
+        List<User> users = userRepository.findAll()
                 .stream()
                 .map(UserConverter::convert)
                 .toList();

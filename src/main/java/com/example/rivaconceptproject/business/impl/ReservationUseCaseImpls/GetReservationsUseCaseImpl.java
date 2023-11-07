@@ -17,7 +17,7 @@ public class GetReservationsUseCaseImpl implements GetReservationsUseCase {
     @Transactional
     @Override
     public GetAllReservationsResponse getReservations() {
-        List<Reservation> reservations = reservationRepository.findAllReservations()
+        List<Reservation> reservations = reservationRepository.findAll()
                 .stream()
                 .map(ReservationConverter::convert)
                 .toList();

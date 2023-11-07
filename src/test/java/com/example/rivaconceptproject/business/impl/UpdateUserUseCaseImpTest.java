@@ -24,12 +24,12 @@ class UpdateUserUseCaseImpTest {
 
     @BeforeEach
     void settingUp(){
-        userRepository.clear();
+//        userRepository.clear();
         userRepository.save(UserEntity.builder()
                 .firstName("Jack")
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
-                .phoneNumber(555666444)
+                .phoneNumber("555666444")
                 .role(Role.Customer)
                 .build());
     }
@@ -41,17 +41,17 @@ class UpdateUserUseCaseImpTest {
         updateUserRequest.setFirstName("Rafael");
         updateUserRequest.setLastName("Ramirez");
         updateUserRequest.setEmail("rafaelramirez@gmail.com");
-        updateUserRequest.setPhoneNumber(111222333);
+        updateUserRequest.setPhoneNumber("111222333");
         updateUserRequest.setRole(Role.Worker);
 
-        Optional<UserEntity> updatedUser = userRepository.findUserById(2);
+        Optional<UserEntity> updatedUser = userRepository.findById(2);
         updateUserUserCase.updateUser(updateUserRequest);
         UserEntity actualUser = updatedUser.get();
 
         String expectedFirstName = "Rafael";
         String expectedLastName = "Ramirez";
         String expectedEmail = "rafaelramirez@gmail.com";
-        long expectedPhoneNumber = 111222333;
+        String expectedPhoneNumber = "111222333";
         Role expectedRole = Role.Worker;
 
         assertEquals(expectedFirstName, actualUser.getFirstName());

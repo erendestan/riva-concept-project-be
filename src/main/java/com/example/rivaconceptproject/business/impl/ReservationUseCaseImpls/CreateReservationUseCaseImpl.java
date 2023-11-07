@@ -21,7 +21,7 @@ public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
     @Transactional
     @Override
     public CreateReservationResponse createReservation(CreateReservationRequest request) {
-        if (reservationRepository.existsByDateTime(request.getReservationDate())){
+        if (reservationRepository.existsByReservationDate(request.getReservationDate())){
             throw new ReservationDateTakenException();
         }
 

@@ -16,7 +16,7 @@ public class GetReservationUseCaseImpl implements GetReservationUseCase {
     @Transactional
     @Override
     public Optional<Reservation> getReservation(long reservationId) {
-        return reservationRepository.findReservationById(reservationId).map(ReservationConverter::convert);
+        return reservationRepository.findReservationByReservationId(reservationId).map(ReservationConverter::convert);
     }
     @Transactional
     @Override

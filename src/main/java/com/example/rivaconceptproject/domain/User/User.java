@@ -20,7 +20,7 @@ public class User {
 
     private String email;
 
-    private long phoneNumber;
+    private String phoneNumber;
 
     @JsonIgnore
     private String password;

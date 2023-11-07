@@ -25,20 +25,20 @@ class GetUserUseCaseImplTest {
 
     @BeforeEach
     void settingUp(){
-        userRepository.clear();
+//        userRepository.clear();
 
         userRepository.save(UserEntity.builder()
                 .firstName("Jack")
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
-                .phoneNumber(555666444)
+                .phoneNumber("555666444")
                 .role(Role.Customer)
                 .build());
     }
 
     @Test
     void getUserById_shouldGetTheUserByGivenId(){
-        UserEntity savedUser = userRepository.findAllUsers().get(0);
+        UserEntity savedUser = userRepository.findAll().get(0);
         long userId = savedUser.getId();
 
         Optional<User> userOptional = getUserUseCase.getUser(userId);

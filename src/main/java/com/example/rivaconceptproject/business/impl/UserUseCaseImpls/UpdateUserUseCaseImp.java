@@ -18,7 +18,7 @@ public class UpdateUserUseCaseImp implements UpdateUserUserCase {
     @Transactional
     @Override
     public void updateUser(UpdateUserRequest request) {
-        Optional<UserEntity> userOptional = userRepository.findUserById(request.getId());
+        Optional<UserEntity> userOptional = userRepository.findById(request.getId());
         if (userOptional.isEmpty()){
             throw new InvalidUserException("USER_ID_INVALID");
         }
@@ -28,7 +28,7 @@ public class UpdateUserUseCaseImp implements UpdateUserUserCase {
     }
 
     private void updateFields(UpdateUserRequest request, UserEntity user){
-        Optional userIdOptional = userRepository.findUserById(request.getId());
+        Optional userIdOptional = userRepository.findById(request.getId());
 
         if(userIdOptional.isPresent()){
             user.setFirstName(request.getFirstName());

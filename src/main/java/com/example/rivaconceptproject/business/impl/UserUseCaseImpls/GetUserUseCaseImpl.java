@@ -17,6 +17,6 @@ public class GetUserUseCaseImpl implements GetUserUseCase {
     @Transactional
     @Override
     public Optional<User> getUser(long userId) {
-        return userRepository.findUserById(userId).map(UserConverter::convert);
+        return userRepository.findById(userId).map(UserConverter::convert);
     }
 }

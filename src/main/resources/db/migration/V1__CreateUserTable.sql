@@ -4,11 +4,11 @@ CREATE TABLE user
     first_name      varchar(20)    NOT NULL,
     last_name       varchar(30)    NOT NULL,
     email           varchar(25)    NOT NULL,
-    phone_number    int            NOT NULL,
+    phone_number    varchar(20)    NOT NULL,
     password        varchar(50)    NOT NULL,
     role            int            NOT NULL,
     PRIMARY KEY (user_ID),
-    UNIQUE (email),
+    UNIQUE (email)
 )
 
 

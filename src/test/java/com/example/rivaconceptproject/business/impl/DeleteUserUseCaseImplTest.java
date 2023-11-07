@@ -22,34 +22,34 @@ class DeleteUserUseCaseImplTest {
 
     @BeforeEach
     void settingUp(){
-        userRepository.clear();
+//        userRepository.clear();
 //        userRepository = new FakeUserRepositoryImpl();
         userRepository.save(UserEntity.builder()
                 .firstName("Jack")
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
-                .phoneNumber(555666444)
+                .phoneNumber("555666444")
                 .role(Role.Customer)
                 .build());
         userRepository.save(UserEntity.builder()
                 .firstName("Edward")
                 .lastName("Ox")
                 .email("edwardox@gmail.com")
-                .phoneNumber(666555111)
+                .phoneNumber("666555111")
                 .role(Role.Worker)
                 .build());
     }
     @AfterEach
     public void tearDown(){
-        userRepository.clear();
+//        userRepository.clear();
     }
 
     @Test
     void deleteUser_deletesByTheUserId(){
 //        DeleteUserUseCase deleteUserUseCase = new DeleteUserUseCaseImpl(userRepository);
         deleteUserUseCase.deleteUser(2);
-        assertFalse(userRepository.findUserById(2).isPresent());
-        assertEquals(1, userRepository.findAllUsers().size());
+        assertFalse(userRepository.findById(2).isPresent());
+        assertEquals(1, userRepository.findAll().size());
     }
 
 }

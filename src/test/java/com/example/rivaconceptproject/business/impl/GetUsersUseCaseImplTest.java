@@ -6,7 +6,6 @@ import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,28 +22,28 @@ class GetUsersUseCaseImplTest {
 
     @BeforeEach
     void settingUp(){
-        userRepository.clear();
+//        userRepository.clear();
 //        userRepository = new FakeUserRepositoryImpl();
 
         userRepository.save(UserEntity.builder()
                 .firstName("Jack")
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
-                .phoneNumber(555666444)
+                .phoneNumber("555666444")
                 .role(Role.Customer)
                 .build());
         userRepository.save(UserEntity.builder()
                 .firstName("Edward")
                 .lastName("Ox")
                 .email("edwardox@gmail.com")
-                .phoneNumber(666555111)
+                .phoneNumber("666555111")
                 .role(Role.Worker)
                 .build());
     }
-    @AfterEach
-    public void tearDown(){
-        userRepository.clear();
-    }
+//    @AfterEach
+//    public void tearDown(){
+//        userRepository.clear();
+//    }
 
     @Test
     void getProducts_shouldGetAllTheProducts(){
@@ -58,7 +57,7 @@ class GetUsersUseCaseImplTest {
                 .firstName("Jack")
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
-                .phoneNumber(555666444)
+                .phoneNumber("555666444")
                 .role(Role.Customer)
                 .build();
         User expectedUser_2 = User.builder()
@@ -66,7 +65,7 @@ class GetUsersUseCaseImplTest {
                 .firstName("Edward")
                 .lastName("Ox")
                 .email("edwardox@gmail.com")
-                .phoneNumber(666555111)
+                .phoneNumber("666555111")
                 .role(Role.Worker)
                 .build();
 //        List<User> userList = new ArrayList<>();

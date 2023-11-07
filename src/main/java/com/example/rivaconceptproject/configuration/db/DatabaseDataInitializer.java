@@ -22,7 +22,7 @@ public class DatabaseDataInitializer {
                     .firstName("Eren")
                     .lastName("Destan")
                     .email("erendestan6@gmail.com")
-                    .phoneNumber(31684469019L)
+                    .phoneNumber("31684469019")
                     .password("123456eren")
                     .role(Role.Admin)
                     .build());

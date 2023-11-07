@@ -28,7 +28,7 @@ public class CreateUserRequest {
     private String email;
 
     @NotNull
-    private long phoneNumber;
+    private String phoneNumber;
 
     @NotNull
     private String password;
