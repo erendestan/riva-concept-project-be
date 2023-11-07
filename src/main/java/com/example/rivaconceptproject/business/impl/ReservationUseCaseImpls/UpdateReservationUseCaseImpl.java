@@ -7,6 +7,7 @@ import com.example.rivaconceptproject.persistence.ReservationRepository;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,8 @@ import java.util.Optional;
 public class UpdateReservationUseCaseImpl implements UpdateReservationUseCase {
    private final ReservationRepository reservationRepository;
    private final UserRepository userRepository;
-    @Override
+    @Transactional
+   @Override
     public void updateReservation(UpdateReservationRequest request) {
         Optional<ReservationEntity> reservationOptional = reservationRepository.findReservationById(request.getReservationId());
         if (reservationOptional.isEmpty()){

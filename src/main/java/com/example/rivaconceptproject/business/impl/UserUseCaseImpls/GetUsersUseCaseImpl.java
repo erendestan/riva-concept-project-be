@@ -4,6 +4,7 @@ import com.example.rivaconceptproject.business.UserUseCases.GetUsersUseCase;
 import com.example.rivaconceptproject.domain.User.GetAllUsersResponse;
 import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.persistence.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.List;
 public class GetUsersUseCaseImpl implements GetUsersUseCase {
     private final UserRepository userRepository;
 
+    @Transactional
     @Override
     public GetAllUsersResponse getUsers() {
         List<User> users = userRepository.findAllUsers()

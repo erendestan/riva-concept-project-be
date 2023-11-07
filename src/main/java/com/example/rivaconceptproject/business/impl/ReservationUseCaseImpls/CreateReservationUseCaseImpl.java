@@ -8,6 +8,7 @@ import com.example.rivaconceptproject.persistence.ReservationRepository;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,8 @@ import org.springframework.stereotype.Service;
 public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
     private final ReservationRepository reservationRepository;
     private final UserRepository userRepository;
+
+    @Transactional
     @Override
     public CreateReservationResponse createReservation(CreateReservationRequest request) {
         if (reservationRepository.existsByDateTime(request.getReservationDate())){

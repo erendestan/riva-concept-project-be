@@ -4,6 +4,7 @@ import com.example.rivaconceptproject.business.ReservationUseCases.GetReservatio
 import com.example.rivaconceptproject.domain.Reservation.GetAllReservationsResponse;
 import com.example.rivaconceptproject.domain.Reservation.Reservation;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class GetReservationsUseCaseImpl implements GetReservationsUseCase {
     private final ReservationRepository reservationRepository;
+    @Transactional
     @Override
     public GetAllReservationsResponse getReservations() {
         List<Reservation> reservations = reservationRepository.findAllReservations()

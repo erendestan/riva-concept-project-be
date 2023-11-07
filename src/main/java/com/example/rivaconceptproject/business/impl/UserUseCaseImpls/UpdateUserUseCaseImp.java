@@ -5,6 +5,7 @@ import com.example.rivaconceptproject.business.exception.InvalidUserException;
 import com.example.rivaconceptproject.domain.User.UpdateUserRequest;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UpdateUserUseCaseImp implements UpdateUserUserCase {
     private final UserRepository userRepository;
+    @Transactional
     @Override
     public void updateUser(UpdateUserRequest request) {
         Optional<UserEntity> userOptional = userRepository.findUserById(request.getId());

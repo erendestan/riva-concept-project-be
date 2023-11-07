@@ -7,6 +7,7 @@ import com.example.rivaconceptproject.domain.User.CreateUserResponse;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class CreateUserUseCaseImpl implements CreateUserUseCase {
     private final UserRepository userRepository;
     private final ReservationRepository reservationRepository;
+    @Transactional
     @Override
     public CreateUserResponse createUser(CreateUserRequest request) {
         if (userRepository.existsByEmail(request.getEmail())){
