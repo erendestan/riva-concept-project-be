@@ -1,12 +1,13 @@
 package com.example.rivaconceptproject.persistence;
 
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-public interface ReservationRepository {
+public interface ReservationRepository extends JpaRepository<ReservationEntity, Long> {
 
     boolean existsByDateTime(LocalDateTime reservationDateTime);
 
@@ -19,7 +20,7 @@ public interface ReservationRepository {
     Optional<ReservationEntity> findReservationById(long reservationId);
     Optional<ReservationEntity> findReservationByUserId(long userId);
 
-    int count();
+    long count();
 
     public void clear();
 }
