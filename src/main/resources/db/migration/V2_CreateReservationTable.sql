@@ -1,7 +1,7 @@
 CREATE TABLE reservation(
     reservation_ID              int         NOT NULL        AUTO_INCREMENT,
     user_ID_FK                  int         NOT NULL,
-    event_ID                    int         NOT NULL,
+    event                       int         NOT NULL,
     reservation_created_date    datetime    NOT NULL,
     reservation_date            datetime    NOT NULL,
     start_time                  time        NOT NULL,

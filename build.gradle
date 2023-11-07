@@ -31,11 +31,17 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.jetbrains:annotations:24.0.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	implementation group: 'javax.validation', name: 'validation-api', version: '1.0.0.GA'
+
+	implementation 'org.flywaydb:flyway-mysql'
+	implementation 'mysql:mysql-connector-java:8.0.33'
+	testImplementation 'org.springframework.cloud:spring-cloud-starter-bootstrap:4.0.4'
+	testImplementation 'com.playtika.testcontainers:embedded-mysql:3.0.0-RC9'
 }
 
 sonar {

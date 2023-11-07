@@ -6,7 +6,7 @@ CREATE TABLE user
     email           varchar(25)    NOT NULL,
     phone_number    int            NOT NULL,
     password        varchar(50)    NOT NULL,
-    role_ID         int            NOT NULL,
+    role            int            NOT NULL,
     PRIMARY KEY (user_ID),
     UNIQUE (email),
 )
