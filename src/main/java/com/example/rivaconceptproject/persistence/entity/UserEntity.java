@@ -10,8 +10,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
-import java.util.List;
-
 @Entity
 @Table(name = "user")
 
@@ -42,7 +40,7 @@ public class UserEntity {
 
     @NotNull
     @Column(name = "phone_number")
-    private long phoneNumber;
+    private String phoneNumber;
 
     @NotBlank
     @Length(min = 2, max = 50)
@@ -54,9 +52,9 @@ public class UserEntity {
     @Enumerated(EnumType.ORDINAL)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
-    @NotNull
-    private List<ReservationEntity> reservations;
+//    @OneToMany(mappedBy = "user")
+//    @NotNull
+//    private List<ReservationEntity> reservations;
 
 //    @OneToMany(mappedBy = "user")
 //    @NotNull
