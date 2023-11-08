@@ -1,8 +1,6 @@
 package com.example.rivaconceptproject.configuration.db;
 
-import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
-import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -17,15 +15,15 @@ public class DatabaseDataInitializer {
 
     @EventListener(ApplicationReadyEvent.class)  //When the application is runned this will be executed.
     public void populateDatabaseInitialDummyData() {
-        System.out.println("***** User has been added to system *****"); //To see what happens on console to understand.(Not needed)
-            userRepository.save(UserEntity.builder()
-                    .firstName("Eren")
-                    .lastName("Destan")
-                    .email("erendestan6@gmail.com")
-                    .phoneNumber("31684469019")
-                    .password("123456eren")
-                    .role(Role.Admin)
-                    .build());
+//        System.out.println("***** User has been added to system *****"); //To see what happens on console to understand.(Not needed)
+//            userRepository.save(UserEntity.builder()
+//                    .firstName("Eren")
+//                    .lastName("Destan")
+//                    .email("erendestan6@gmail.com")
+//                    .phoneNumber("31684469019")
+//                    .password("123456eren")
+//                    .role(Role.Admin)
+//                    .build());
 
 //        System.out.println("***** Reservation has been added to system *****");
 //            reservationRepository.save(ReservationEntity.builder()

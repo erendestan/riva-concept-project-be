@@ -20,7 +20,7 @@ import org.hibernate.validator.constraints.Length;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "user_ID")
     private long id;
 
     @NotBlank
