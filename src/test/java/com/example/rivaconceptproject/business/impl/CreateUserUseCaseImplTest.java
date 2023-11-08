@@ -8,8 +8,6 @@ import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,14 +26,6 @@ class CreateUserUseCaseImplTest {
     UserRepository userRepositoryMock;
     @InjectMocks
     CreateUserUseCaseImpl createUserUseCase;
-    @BeforeEach
-    public void settingUp(){
-        userRepositoryMock.clear();
-    }
-    @AfterEach
-    public void tearDown(){
-        userRepositoryMock.clear();
-    }
     @Test
     void createUser_saves_newUserInToFakeDb(){
         CreateUserRequest request = CreateUserRequest.builder()

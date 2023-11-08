@@ -41,8 +41,8 @@ class DeleteUserUseCaseImplTest {
 
 
         deleteUserUseCase.deleteUser(2);
-        verify(userRepositoryMock).deleteById(2);
-        assertFalse(userRepositoryMock.findById(2).isPresent());
+        verify(userRepositoryMock).deleteById(2L);
+        assertFalse(userRepositoryMock.findById(2L).isPresent());
 
 //        assertEquals(1, userRepositoryMock.findAll().size());
     }

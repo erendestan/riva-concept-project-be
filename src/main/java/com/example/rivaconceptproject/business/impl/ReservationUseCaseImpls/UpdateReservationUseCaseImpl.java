@@ -21,7 +21,7 @@ public class UpdateReservationUseCaseImpl implements UpdateReservationUseCase {
     @Transactional
    @Override
     public void updateReservation(UpdateReservationRequest request) {
-        Optional<ReservationEntity> reservationOptional = reservationRepository.findReservationByReservationId(request.getReservationId());
+        Optional<ReservationEntity> reservationOptional = reservationRepository.findByReservationId(request.getReservationId());
         if (reservationOptional.isEmpty()){
             throw new InvalidReservationException("RESERVATION_ID_INVALID");
         }
@@ -32,13 +32,13 @@ public class UpdateReservationUseCaseImpl implements UpdateReservationUseCase {
     }
 
     private void updateFields(UpdateReservationRequest request, ReservationEntity reservation){
-        Optional reservationIdOptional = reservationRepository.findReservationByReservationId(request.getReservationId());
+        Optional reservationIdOptional = reservationRepository.findByReservationId(request.getReservationId());
 
-        UserEntity userEntity = userRepository.getId(request.getUserId());
+        Optional<UserEntity> userEntity = userRepository.findById(request.getUserId());
 
         if(reservationIdOptional.isPresent()){
 //            reservation.setUserId(request.getUserId());
-            reservation.setUser(userEntity);
+            reservation.setUser(userEntity.get());
             reservation.setEventType(request.getEventType());
             reservation.setReservationCreatedDate(request.getReservationCreatedDate());
             reservation.setReservationDate(request.getReservationDate());

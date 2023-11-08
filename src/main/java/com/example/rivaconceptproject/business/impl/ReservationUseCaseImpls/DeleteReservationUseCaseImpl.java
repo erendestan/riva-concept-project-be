@@ -13,6 +13,6 @@ public class DeleteReservationUseCaseImpl implements DeleteReservationUseCase {
     @Transactional
     @Override
     public void deleteReservation(long reservationId) {
-        this.reservationRepository.deleteByReservationId(reservationId);
+        this.reservationRepository.deleteById(reservationId);
     }
 }

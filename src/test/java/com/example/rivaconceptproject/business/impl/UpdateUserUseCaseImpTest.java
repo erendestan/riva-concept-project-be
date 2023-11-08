@@ -37,20 +37,20 @@ class UpdateUserUseCaseImpTest {
                 .phoneNumber("555666444")
                 .role(Role.Customer)
                 .build();
-        when(userRepositoryMock.findById(2)).thenReturn(Optional.of(savedUser));
+        when(userRepositoryMock.findById(2L)).thenReturn(Optional.of(savedUser));
     }
 
     @Test
     void updateProduct_shouldUpdateTheUserByGivenId(){
         UpdateUserRequest updateUserRequest = new UpdateUserRequest();
-        updateUserRequest.setId(2);
+        updateUserRequest.setId(2L);
         updateUserRequest.setFirstName("Rafael");
         updateUserRequest.setLastName("Ramirez");
         updateUserRequest.setEmail("rafaelramirez@gmail.com");
         updateUserRequest.setPhoneNumber("111222333");
         updateUserRequest.setRole(Role.Worker);
 
-        Optional<UserEntity> updatedUser = userRepositoryMock.findById(2);
+        Optional<UserEntity> updatedUser = userRepositoryMock.findById(2L);
         updateUserUserCase.updateUser(updateUserRequest);
         UserEntity actualUser = updatedUser.get();
 

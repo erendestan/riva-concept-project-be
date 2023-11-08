@@ -12,6 +12,8 @@ import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
@@ -38,10 +40,10 @@ public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
     }
 
     private ReservationEntity saveNewReservation(CreateReservationRequest request){
-        UserEntity userEntity = userRepository.getId(request.getUserId());
+        Optional<UserEntity> userEntity = userRepository.findById(request.getUserId());
         ReservationEntity newReservation = ReservationEntity.builder()
 //                .userId(request.getUserId())
-                .user(userEntity)
+                .user(userEntity.get())
                 .eventType(request.getEventType())
                 .reservationCreatedDate(request.getReservationCreatedDate())
                 .reservationDate(request.getReservationDate())

@@ -39,7 +39,7 @@ class GetUserUseCaseImplTest {
                 .phoneNumber("555666444")
                 .role(Role.Customer)
                 .build();
-        when(userRepositoryMock.findById(1)).thenReturn(Optional.of(savedUser));
+        when(userRepositoryMock.findById(1L)).thenReturn(Optional.of(savedUser));
     }
 
     @Test
