@@ -1,37 +1,43 @@
 package com.example.rivaconceptproject.business.impl;
 
-import com.example.rivaconceptproject.business.UserUseCases.UpdateUserUserCase;
+import com.example.rivaconceptproject.business.impl.UserUseCaseImpls.UpdateUserUseCaseImp;
 import com.example.rivaconceptproject.domain.User.UpdateUserRequest;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class UpdateUserUseCaseImpTest {
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    UpdateUserUserCase updateUserUserCase;
+    @Mock
+    UserRepository userRepositoryMock;
+    @InjectMocks
+    UpdateUserUseCaseImp updateUserUserCase;
 
     @BeforeEach
     void settingUp(){
 //        userRepository.clear();
-        userRepository.save(UserEntity.builder()
+        UserEntity savedUser = UserEntity.builder()
+                .id(2)
                 .firstName("Jack")
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
                 .phoneNumber("555666444")
                 .role(Role.Customer)
-                .build());
+                .build();
+        when(userRepositoryMock.findById(2)).thenReturn(Optional.of(savedUser));
     }
 
     @Test
@@ -44,7 +50,7 @@ class UpdateUserUseCaseImpTest {
         updateUserRequest.setPhoneNumber("111222333");
         updateUserRequest.setRole(Role.Worker);
 
-        Optional<UserEntity> updatedUser = userRepository.findById(2);
+        Optional<UserEntity> updatedUser = userRepositoryMock.findById(2);
         updateUserUserCase.updateUser(updateUserRequest);
         UserEntity actualUser = updatedUser.get();
 
@@ -61,5 +67,7 @@ class UpdateUserUseCaseImpTest {
         assertEquals(expectedRole, actualUser.getRole());
 
         assertNotNull(updatedUser);
+
+        verify(userRepositoryMock).save(actualUser);
     }
 }
