@@ -27,5 +27,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     UserEntity getId(long userId);
     long count();
 
+    void clear();
+
 //    public void clear();
 }
