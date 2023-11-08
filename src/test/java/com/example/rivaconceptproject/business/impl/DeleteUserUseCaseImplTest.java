@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class DeleteUserUseCaseImplTest {
@@ -40,6 +41,7 @@ class DeleteUserUseCaseImplTest {
 
 
         deleteUserUseCase.deleteUser(2);
+        verify(userRepositoryMock).deleteById(2);
         assertFalse(userRepositoryMock.findById(2).isPresent());
 
 //        assertEquals(1, userRepositoryMock.findAll().size());
