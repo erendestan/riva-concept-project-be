@@ -31,7 +31,7 @@ class GetUsersUseCaseImplTest {
         when(userRepositoryMock.findAll()).thenReturn(
                 Arrays.asList(
                         UserEntity.builder()
-                                .id(1)
+                                .id(1L)
                                 .firstName("Jack")
                                 .lastName("Kral")
                                 .email("jackkral@gmail.com")
@@ -39,7 +39,7 @@ class GetUsersUseCaseImplTest {
                                 .role(Role.Customer)
                                 .build(),
                         UserEntity.builder()
-                                .id(2)
+                                .id(2L)
                                 .firstName("Edward")
                                 .lastName("Ox")
                                 .email("edwardox@gmail.com")
@@ -61,7 +61,7 @@ class GetUsersUseCaseImplTest {
     void getUsers_shouldGetAllTheUsers_ShouldMatchTheExpectedDetails() {
         // Define the expected UserEntity objects
         UserEntity expectedUser1 = UserEntity.builder()
-                .id(1)
+                .id(1L)
                 .firstName("Jack")
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
@@ -70,7 +70,7 @@ class GetUsersUseCaseImplTest {
                 .build();
 
         UserEntity expectedUser2 = UserEntity.builder()
-                .id(2)
+                .id(2L)
                 .firstName("Edward")
                 .lastName("Ox")
                 .email("edwardox@gmail.com")
@@ -85,7 +85,7 @@ class GetUsersUseCaseImplTest {
         GetAllUsersResponse result = getUsersUseCase.getUsers();
 
         User actualUser1 = User.builder()
-                .id(1)
+                .id(1L)
                 .firstName("Jack")
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
@@ -94,7 +94,7 @@ class GetUsersUseCaseImplTest {
                 .build();
 
         User actualUser2 = User.builder()
-                .id(2)
+                .id(2L)
                 .firstName("Edward")
                 .lastName("Ox")
                 .email("edwardox@gmail.com")

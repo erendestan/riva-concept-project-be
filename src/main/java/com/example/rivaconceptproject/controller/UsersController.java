@@ -45,7 +45,7 @@ public class UsersController {
     }
 
     @DeleteMapping("{userId}") //DeleteMapping for Deleting user with the provided id
-    public ResponseEntity<Void> deleteUser(@PathVariable int userId){
+    public ResponseEntity<Void> deleteUser(@PathVariable Long userId){
         deleteUserUseCase.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }

@@ -30,7 +30,7 @@ class UpdateUserUseCaseImpTest {
     void settingUp(){
 //        userRepository.clear();
         UserEntity savedUser = UserEntity.builder()
-                .id(2)
+                .id(2L)
                 .firstName("Jack")
                 .lastName("Kral")
                 .email("jackkral@gmail.com")

@@ -32,7 +32,7 @@ class GetUserUseCaseImplTest {
 //        userRepository.clear();
 
         UserEntity savedUser = UserEntity.builder()
-                .id(1)
+                .id(1L)
                 .firstName("Jack")
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
