@@ -19,6 +19,10 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
     @Transactional
     @Override
     public CreateUserResponse createUser(CreateUserRequest request) {
+        if (request == null || isAnyFieldEmpty(request)) {
+            throw new IllegalArgumentException("User request contains empty fields.");
+        }
+
         if (userRepository.existsByEmail(request.getEmail())){
             throw new EmailAlreadyExistsException();
         }
@@ -40,5 +44,13 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
                 .build();
 
         return userRepository.save(newUser);
+    }
+
+    private boolean isAnyFieldEmpty(CreateUserRequest request) {
+        return request.getFirstName() == null || request.getFirstName().isEmpty() ||
+                request.getLastName() == null || request.getLastName().isEmpty() ||
+                request.getEmail() == null || request.getEmail().isEmpty() ||
+                request.getPhoneNumber() == null || request.getPhoneNumber().isEmpty() ||
+                request.getPassword() == null || request.getPassword().isEmpty();
     }
 }

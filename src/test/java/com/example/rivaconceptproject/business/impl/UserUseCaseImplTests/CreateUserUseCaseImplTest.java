@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.business.impl;
+package com.example.rivaconceptproject.business.impl.UserUseCaseImplTests;
 
 import com.example.rivaconceptproject.business.exception.EmailAlreadyExistsException;
 import com.example.rivaconceptproject.business.impl.UserUseCaseImpls.CreateUserUseCaseImpl;
@@ -87,4 +87,19 @@ class CreateUserUseCaseImplTest {
         verify(userRepositoryMock).existsByEmail(request.getEmail());
     }
 
+
+    @Test
+    void createUserWithEmptyFields_Should_Throw_Illegal_Argument_Exception() {
+        // Create a sample request with empty fields (e.g., empty email)
+        CreateUserRequest request = CreateUserRequest.builder()
+                .firstName("Jack")
+                .lastName("Kral")
+                .phoneNumber("555444111")
+                .password("testpassword")
+                .role(Role.Worker)
+                .build();
+
+        // The createUser method should throw an exception if any of the fields are empty
+        assertThrows(IllegalArgumentException.class, () -> createUserUseCase.createUser(request));
+    }
 }

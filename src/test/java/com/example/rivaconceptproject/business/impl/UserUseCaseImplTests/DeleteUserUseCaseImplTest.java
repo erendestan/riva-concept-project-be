@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.business.impl;
+package com.example.rivaconceptproject.business.impl.UserUseCaseImplTests;
 
 import com.example.rivaconceptproject.business.impl.UserUseCaseImpls.DeleteUserUseCaseImpl;
 import com.example.rivaconceptproject.domain.enums.Role;
