@@ -1,5 +1,6 @@
 package com.example.rivaconceptproject.business.impl.UserUseCaseImplTests;
 
+import com.example.rivaconceptproject.business.exception.UserRetrivalException;
 import com.example.rivaconceptproject.business.impl.UserUseCaseImpls.GetUsersUseCaseImpl;
 import com.example.rivaconceptproject.domain.User.GetAllUsersResponse;
 import com.example.rivaconceptproject.domain.User.User;
@@ -13,9 +14,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -106,6 +108,34 @@ class GetUsersUseCaseImplTest {
         // Verify that the returned UserEntity objects match the expected details
         assertEquals(actualUser1, result.getUsers().get(0));
         assertEquals(actualUser2, result.getUsers().get(1));
+    }
+
+    @Test
+    void getUsers_noUsersInRepository() {
+        // Stub the userRepositoryMock's behavior to return an empty list
+        when(userRepositoryMock.findAll()).thenReturn(Collections.emptyList());
+
+        // Call the getUsers method
+        GetAllUsersResponse result = getUsersUseCase.getUsers();
+
+        // Verify that the response contains an empty list of users
+        assertNotNull(result);
+        assertTrue(result.getUsers().isEmpty());
+
+        // Verify that userRepositoryMock.findAll() was called
+        verify(userRepositoryMock).findAll();
+    }
+
+    @Test
+    void getUsers_repositoryException() {
+        // Stub the userRepositoryMock's behavior to throw an exception
+        when(userRepositoryMock.findAll()).thenThrow(new UserRetrivalException("Failed to retrieve users"));
+
+        // Call the getUsers method
+        assertThrows(UserRetrivalException.class, () -> getUsersUseCase.getUsers());
+
+        // Verify that userRepositoryMock.findAll() was called
+        verify(userRepositoryMock).findAll();
     }
 
 }
