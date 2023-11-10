@@ -32,23 +32,18 @@ public class UpdateReservationUseCaseImpl implements UpdateReservationUseCase {
     }
 
     private void updateFields(UpdateReservationRequest request, ReservationEntity reservation){
-        Optional reservationIdOptional = reservationRepository.findByReservationId(request.getReservationId());
-
         Optional<UserEntity> userEntity = userRepository.findById(request.getUserId());
 
-        if(reservationIdOptional.isPresent()){
-//            reservation.setUserId(request.getUserId());
+        if (userEntity.isPresent()) {
             reservation.setUser(userEntity.get());
             reservation.setEventType(request.getEventType());
             reservation.setReservationCreatedDate(request.getReservationCreatedDate());
             reservation.setReservationDate(request.getReservationDate());
             reservation.setStartTime(request.getStartTime());
             reservation.setEndTime(request.getEndTime());
-
             reservationRepository.save(reservation);
-        }
-        else{
-            throw new InvalidReservationException("RESERVATION_ID_INVALID");
+        } else {
+            throw new InvalidReservationException("RESERVATION_IS_INVALID");
         }
     }
 }
