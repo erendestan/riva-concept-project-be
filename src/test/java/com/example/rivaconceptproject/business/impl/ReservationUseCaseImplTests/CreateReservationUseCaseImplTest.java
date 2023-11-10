@@ -33,9 +33,6 @@ class CreateReservationUseCaseImplTest {
     @Mock
     private ReservationRepository reservationRepositoryMock;
 
-  /*  @Mock
-   private UserRepository userRepositoryMock;*/
-
     @InjectMocks
     private CreateReservationUseCaseImpl createReservationUseCase;
 

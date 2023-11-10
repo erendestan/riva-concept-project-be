@@ -1,10 +1,14 @@
 package com.example.rivaconceptproject.business.impl.ReservationUseCaseImpls;
 
 import com.example.rivaconceptproject.business.ReservationUseCases.DeleteReservationUseCase;
+import com.example.rivaconceptproject.business.exception.ReservationNotFoundException;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
+import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -13,6 +17,13 @@ public class DeleteReservationUseCaseImpl implements DeleteReservationUseCase {
     @Transactional
     @Override
     public void deleteReservation(long reservationId) {
-        this.reservationRepository.deleteById(reservationId);
+        Optional<ReservationEntity> reservationOptional = reservationRepository.findByReservationId(reservationId);
+
+        if(reservationOptional.isPresent()){
+            reservationRepository.deleteById(reservationId);
+        }else{
+            throw new ReservationNotFoundException("Reservation with ID " + reservationId + " not found.");
+        }
+
     }
 }
