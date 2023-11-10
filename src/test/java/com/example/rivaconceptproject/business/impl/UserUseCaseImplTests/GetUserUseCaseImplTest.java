@@ -59,7 +59,7 @@ class GetUserUseCaseImplTest {
 
 
     @Test
-    void shouldThrowUserNotFoundExceptionWhenUserIdNotFound() { //There is smt wrong here check tomorrow
+    void shouldThrowUserNotFoundExceptionWhenUserIdNotFound() {
         long userId = 2;
 
         // Set up the behavior first

@@ -1,6 +1,7 @@
 package com.example.rivaconceptproject.business.impl.ReservationUseCaseImpls;
 
 import com.example.rivaconceptproject.business.ReservationUseCases.GetReservationsUseCase;
+import com.example.rivaconceptproject.business.exception.ReservationRetrivalException;
 import com.example.rivaconceptproject.domain.Reservation.GetAllReservationsResponse;
 import com.example.rivaconceptproject.domain.Reservation.Reservation;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
@@ -17,13 +18,20 @@ public class GetReservationsUseCaseImpl implements GetReservationsUseCase {
     @Transactional
     @Override
     public GetAllReservationsResponse getReservations() {
-        List<Reservation> reservations = reservationRepository.findAll()
-                .stream()
-                .map(ReservationConverter::convert)
-                .toList();
 
-        return GetAllReservationsResponse.builder()
-                .reservations(reservations)
-                .build();
+        try{
+            List<Reservation> reservations = reservationRepository.findAll()
+                    .stream()
+                    .map(ReservationConverter::convert)
+                    .toList();
+
+            return GetAllReservationsResponse.builder()
+                    .reservations(reservations)
+                    .build();
+        }
+        catch (Exception ex){
+            throw new ReservationRetrivalException("Failed to retrieve reservations");
+        }
+
     }
 }
