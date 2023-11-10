@@ -1,6 +1,7 @@
 package com.example.rivaconceptproject.business.impl.ReservationUseCaseImpls;
 
 import com.example.rivaconceptproject.business.ReservationUseCases.GetReservationUseCase;
+import com.example.rivaconceptproject.business.exception.ReservationNotFoundException;
 import com.example.rivaconceptproject.domain.Reservation.Reservation;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
 import jakarta.transaction.Transactional;
@@ -16,7 +17,11 @@ public class GetReservationUseCaseImpl implements GetReservationUseCase {
     @Transactional
     @Override
     public Optional<Reservation> getReservation(long reservationId) {
-        return reservationRepository.findByReservationId(reservationId).map(ReservationConverter::convert);
+        Optional<Reservation> reservationOptional = reservationRepository.findByReservationId(reservationId).map(ReservationConverter::convert);
+        if(reservationOptional.isEmpty()){
+            throw new ReservationNotFoundException("Reservation with ID" + reservationId + "not found");
+        }
+        return reservationOptional;
     }
     @Transactional
     @Override
