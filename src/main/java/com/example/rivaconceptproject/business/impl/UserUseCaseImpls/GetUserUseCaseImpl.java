@@ -1,6 +1,7 @@
 package com.example.rivaconceptproject.business.impl.UserUseCaseImpls;
 
 import com.example.rivaconceptproject.business.UserUseCases.GetUserUseCase;
+import com.example.rivaconceptproject.business.exception.UserNotFoundException;
 import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import jakarta.transaction.Transactional;
@@ -16,7 +17,11 @@ public class GetUserUseCaseImpl implements GetUserUseCase {
 
     @Transactional
     @Override
-    public Optional<User> getUser(long userId) {
-        return userRepository.findById(userId).map(UserConverter::convert);
+    public Optional<User> getUser(Long userId) {
+        Optional<User> userOptional = userRepository.findById(userId).map(UserConverter::convert);
+            if (userOptional.isEmpty()) {
+                throw new UserNotFoundException("User with ID" + userId + "not found.");
+            }
+            return userOptional;
     }
 }

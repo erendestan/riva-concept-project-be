@@ -1,5 +1,6 @@
 package com.example.rivaconceptproject.business.impl.UserUseCaseImplTests;
 
+import com.example.rivaconceptproject.business.exception.UserNotFoundException;
 import com.example.rivaconceptproject.business.impl.UserUseCaseImpls.GetUserUseCaseImpl;
 import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.domain.enums.Role;
@@ -14,10 +15,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class GetUserUseCaseImplTest {
@@ -28,9 +27,7 @@ class GetUserUseCaseImplTest {
 
 
     @BeforeEach
-    void settingUp(){
-//        userRepository.clear();
-
+    void setUp() {
         UserEntity savedUser = UserEntity.builder()
                 .id(1L)
                 .firstName("Jack")
@@ -39,17 +36,13 @@ class GetUserUseCaseImplTest {
                 .phoneNumber("555666444")
                 .role(Role.Customer)
                 .build();
-        when(userRepositoryMock.findById(1L)).thenReturn(Optional.of(savedUser));
+        lenient().when(userRepositoryMock.findById(1L)).thenReturn(Optional.of(savedUser));
     }
 
     @Test
-    void getUserById_shouldGetTheUserByGivenId(){
+    void shouldRetrieveUserById() {
         long userId = 1;
         Optional<User> userOptional = getUserUseCase.getUser(userId);
-
-//        UserEntity savedUser = userRepository.findAll().get(0);
-//        long userId = savedUser.getId();
-
 
 
         assertTrue(userOptional.isPresent());
@@ -60,8 +53,23 @@ class GetUserUseCaseImplTest {
         assertEquals("555666444", user.getPhoneNumber());
         assertEquals(Role.Customer, user.getRole());
 
+        // Verify that the UserRepository's findById method was called with the correct userId
         verify(userRepositoryMock).findById(userId);
     }
 
+
+    @Test
+    void shouldThrowUserNotFoundExceptionWhenUserIdNotFound() { //There is smt wrong here check tomorrow
+        long userId = 2;
+
+        // Set up the behavior first
+        when(userRepositoryMock.findById(userId)).thenReturn(Optional.empty());
+
+        // Invoke the method that triggers the behavior
+        assertThrows(UserNotFoundException.class, () -> getUserUseCase.getUser(userId));
+
+        // Verify that the UserRepository's findById method was called with the correct userId
+        verify(userRepositoryMock).findById(userId);
+    }
 
 }
