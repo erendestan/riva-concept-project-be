@@ -1,9 +1,9 @@
 package com.example.rivaconceptproject.business.impl.UserUseCaseImpls;
 
-import com.example.rivaconceptproject.business.UserUseCases.CreateUserUseCase;
+import com.example.rivaconceptproject.business.userusecases.CreateUserUseCase;
 import com.example.rivaconceptproject.business.exception.EmailAlreadyExistsException;
-import com.example.rivaconceptproject.domain.User.CreateUserRequest;
-import com.example.rivaconceptproject.domain.User.CreateUserResponse;
+import com.example.rivaconceptproject.domain.user.CreateUserRequest;
+import com.example.rivaconceptproject.domain.user.CreateUserResponse;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;

@@ -1,13 +1,12 @@
-package com.example.rivaconceptproject.domain.Reservation;
+package com.example.rivaconceptproject.domain.reservation;
 
-import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.domain.enums.Event;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -15,16 +14,15 @@ import java.time.LocalTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateReservationRequest {
-
+public class UpdateReservationRequest {
     @NotNull
-    private User user;
+    private long reservationId;
+    @NotNull
+    private long userId;
     @NotNull
     private Event eventType;
-
     @NotNull
     private LocalDateTime reservationCreatedDate;
-
     @NotNull
     private LocalDateTime reservationDate;
     @NotNull

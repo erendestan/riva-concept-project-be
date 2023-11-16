@@ -1,6 +1,6 @@
-package com.example.rivaconceptproject.business.ReservationUseCases;
+package com.example.rivaconceptproject.business.reservationusecases;
 
-import com.example.rivaconceptproject.domain.Reservation.Reservation;
+import com.example.rivaconceptproject.domain.reservation.Reservation;
 
 import java.util.Optional;
 

@@ -1,9 +1,9 @@
 package com.example.rivaconceptproject.business.impl.UserUseCaseImpls;
 
-import com.example.rivaconceptproject.business.UserUseCases.GetUsersUseCase;
+import com.example.rivaconceptproject.business.userusecases.GetUsersUseCase;
 import com.example.rivaconceptproject.business.exception.UserRetrivalException;
-import com.example.rivaconceptproject.domain.User.GetAllUsersResponse;
-import com.example.rivaconceptproject.domain.User.User;
+import com.example.rivaconceptproject.domain.user.GetAllUsersResponse;
+import com.example.rivaconceptproject.domain.user.User;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;

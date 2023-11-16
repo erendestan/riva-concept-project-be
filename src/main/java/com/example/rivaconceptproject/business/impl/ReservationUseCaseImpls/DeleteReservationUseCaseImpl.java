@@ -1,6 +1,6 @@
 package com.example.rivaconceptproject.business.impl.ReservationUseCaseImpls;
 
-import com.example.rivaconceptproject.business.ReservationUseCases.DeleteReservationUseCase;
+import com.example.rivaconceptproject.business.reservationusecases.DeleteReservationUseCase;
 import com.example.rivaconceptproject.business.exception.ReservationNotFoundException;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;

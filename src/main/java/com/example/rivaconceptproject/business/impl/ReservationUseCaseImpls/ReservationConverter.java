@@ -1,7 +1,7 @@
 package com.example.rivaconceptproject.business.impl.ReservationUseCaseImpls;
 
 import com.example.rivaconceptproject.business.impl.UserUseCaseImpls.UserConverter;
-import com.example.rivaconceptproject.domain.Reservation.Reservation;
+import com.example.rivaconceptproject.domain.reservation.Reservation;
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
 
 public class ReservationConverter {

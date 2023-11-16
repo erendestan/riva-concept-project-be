@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.domain.Reservation;
+package com.example.rivaconceptproject.domain.reservation;
 
 import lombok.Builder;
 import lombok.Data;

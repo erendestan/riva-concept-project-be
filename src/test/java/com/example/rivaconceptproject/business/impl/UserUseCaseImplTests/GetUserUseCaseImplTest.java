@@ -2,7 +2,7 @@ package com.example.rivaconceptproject.business.impl.UserUseCaseImplTests;
 
 import com.example.rivaconceptproject.business.exception.UserNotFoundException;
 import com.example.rivaconceptproject.business.impl.UserUseCaseImpls.GetUserUseCaseImpl;
-import com.example.rivaconceptproject.domain.User.User;
+import com.example.rivaconceptproject.domain.user.User;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;

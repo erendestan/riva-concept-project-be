@@ -1,6 +1,6 @@
-package com.example.rivaconceptproject.domain.Reservation;
+package com.example.rivaconceptproject.domain.reservation;
 
-import com.example.rivaconceptproject.domain.User.User;
+import com.example.rivaconceptproject.domain.user.User;
 import com.example.rivaconceptproject.domain.enums.Event;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

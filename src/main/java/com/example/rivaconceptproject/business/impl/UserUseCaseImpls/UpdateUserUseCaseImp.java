@@ -1,8 +1,8 @@
 package com.example.rivaconceptproject.business.impl.UserUseCaseImpls;
 
-import com.example.rivaconceptproject.business.UserUseCases.UpdateUserUserCase;
+import com.example.rivaconceptproject.business.userusecases.UpdateUserUserCase;
 import com.example.rivaconceptproject.business.exception.InvalidUserException;
-import com.example.rivaconceptproject.domain.User.UpdateUserRequest;
+import com.example.rivaconceptproject.domain.user.UpdateUserRequest;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import jakarta.transaction.Transactional;

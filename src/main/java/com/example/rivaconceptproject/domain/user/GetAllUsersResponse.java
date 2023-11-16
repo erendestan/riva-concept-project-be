@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.domain.Reservation;
+package com.example.rivaconceptproject.domain.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,6 +11,6 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class GetAllReservationsResponse {
-    private List<Reservation> reservations;
+public class GetAllUsersResponse {
+    private List<User> users;
 }

@@ -1,8 +1,8 @@
 package com.example.rivaconceptproject.business.impl.ReservationUseCaseImpls;
 
-import com.example.rivaconceptproject.business.ReservationUseCases.UpdateReservationUseCase;
+import com.example.rivaconceptproject.business.reservationusecases.UpdateReservationUseCase;
 import com.example.rivaconceptproject.business.exception.InvalidReservationException;
-import com.example.rivaconceptproject.domain.Reservation.UpdateReservationRequest;
+import com.example.rivaconceptproject.domain.reservation.UpdateReservationRequest;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;

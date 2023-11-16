@@ -1,8 +1,8 @@
 package com.example.rivaconceptproject.business.impl.ReservationUseCaseImpls;
 
-import com.example.rivaconceptproject.business.ReservationUseCases.GetReservationUseCase;
+import com.example.rivaconceptproject.business.reservationusecases.GetReservationUseCase;
 import com.example.rivaconceptproject.business.exception.ReservationNotFoundException;
-import com.example.rivaconceptproject.domain.Reservation.Reservation;
+import com.example.rivaconceptproject.domain.reservation.Reservation;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;

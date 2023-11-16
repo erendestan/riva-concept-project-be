@@ -1,8 +1,8 @@
 package com.example.rivaconceptproject.controller;
 
 
-import com.example.rivaconceptproject.business.ReservationUseCases.*;
-import com.example.rivaconceptproject.domain.Reservation.*;
+import com.example.rivaconceptproject.business.reservationusecases.*;
+import com.example.rivaconceptproject.domain.reservation.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,7 +1,7 @@
 package com.example.rivaconceptproject.business.impl.UserUseCaseImplTests;
 
 import com.example.rivaconceptproject.business.impl.UserUseCaseImpls.UpdateUserUseCaseImp;
-import com.example.rivaconceptproject.domain.User.UpdateUserRequest;
+import com.example.rivaconceptproject.domain.user.UpdateUserRequest;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;

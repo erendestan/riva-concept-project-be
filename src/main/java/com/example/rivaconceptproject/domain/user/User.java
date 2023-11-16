@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.domain.User;
+package com.example.rivaconceptproject.domain.user;
 
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;

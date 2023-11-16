@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.domain.User;
+package com.example.rivaconceptproject.domain.user;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.example.rivaconceptproject.business.impl.UserUseCaseImpls;
 
-import com.example.rivaconceptproject.domain.User.User;
+import com.example.rivaconceptproject.domain.user.User;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 
 public class UserConverter {

@@ -2,8 +2,8 @@ package com.example.rivaconceptproject.business.impl.ReservationUseCaseImplTests
 
 import com.example.rivaconceptproject.business.exception.ReservationNotFoundException;
 import com.example.rivaconceptproject.business.impl.ReservationUseCaseImpls.GetReservationUseCaseImpl;
-import com.example.rivaconceptproject.domain.Reservation.Reservation;
-import com.example.rivaconceptproject.domain.User.User;
+import com.example.rivaconceptproject.domain.reservation.Reservation;
+import com.example.rivaconceptproject.domain.user.User;
 import com.example.rivaconceptproject.domain.enums.Event;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.ReservationRepository;

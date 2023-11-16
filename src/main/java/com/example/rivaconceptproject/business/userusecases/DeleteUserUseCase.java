@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.business.UserUseCases;
+package com.example.rivaconceptproject.business.userusecases;
 
 public interface DeleteUserUseCase {
     void deleteUser(Long userId);
