@@ -1,7 +1,7 @@
 package com.example.rivaconceptproject.business.impl.UserUseCaseImplTests;
 
 import com.example.rivaconceptproject.business.exception.UserRetrivalException;
-import com.example.rivaconceptproject.business.impl.UserUseCaseImpls.GetUsersUseCaseImpl;
+import com.example.rivaconceptproject.business.impl.userusecaseimpls.GetUsersUseCaseImpl;
 import com.example.rivaconceptproject.domain.user.GetAllUsersResponse;
 import com.example.rivaconceptproject.domain.user.User;
 import com.example.rivaconceptproject.domain.enums.Role;

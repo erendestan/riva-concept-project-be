@@ -1,7 +1,7 @@
 package com.example.rivaconceptproject.business.impl.ReservationUseCaseImplTests;
 
 import com.example.rivaconceptproject.business.exception.ReservationDateTakenException;
-import com.example.rivaconceptproject.business.impl.ReservationUseCaseImpls.CreateReservationUseCaseImpl;
+import com.example.rivaconceptproject.business.impl.reservationusecaseimpls.CreateReservationUseCaseImpl;
 import com.example.rivaconceptproject.domain.reservation.CreateReservationRequest;
 import com.example.rivaconceptproject.domain.reservation.CreateReservationResponse;
 import com.example.rivaconceptproject.domain.reservation.Reservation;

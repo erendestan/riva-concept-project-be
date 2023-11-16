@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.business.impl.UserUseCaseImpls;
+package com.example.rivaconceptproject.business.impl.userusecaseimpls;
 
 import com.example.rivaconceptproject.business.userusecases.UpdateUserUserCase;
 import com.example.rivaconceptproject.business.exception.InvalidUserException;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class UpdateUserUseCaseImp implements UpdateUserUserCase {
+public class UpdateUserUseCaseImpl implements UpdateUserUserCase {
     private final UserRepository userRepository;
     @Transactional
     @Override

@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.business.impl.ReservationUseCaseImpls;
+package com.example.rivaconceptproject.business.impl.reservationusecaseimpls;
 
 import com.example.rivaconceptproject.business.reservationusecases.DeleteReservationUseCase;
 import com.example.rivaconceptproject.business.exception.ReservationNotFoundException;

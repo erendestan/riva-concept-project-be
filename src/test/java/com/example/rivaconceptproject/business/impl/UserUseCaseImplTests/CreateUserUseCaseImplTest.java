@@ -1,7 +1,7 @@
 package com.example.rivaconceptproject.business.impl.UserUseCaseImplTests;
 
 import com.example.rivaconceptproject.business.exception.EmailAlreadyExistsException;
-import com.example.rivaconceptproject.business.impl.UserUseCaseImpls.CreateUserUseCaseImpl;
+import com.example.rivaconceptproject.business.impl.userusecaseimpls.CreateUserUseCaseImpl;
 import com.example.rivaconceptproject.domain.user.CreateUserRequest;
 import com.example.rivaconceptproject.domain.user.CreateUserResponse;
 import com.example.rivaconceptproject.domain.user.User;

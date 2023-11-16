@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.business.impl.UserUseCaseImpls;
+package com.example.rivaconceptproject.business.impl.userusecaseimpls;
 
 import com.example.rivaconceptproject.business.userusecases.GetUserUseCase;
 import com.example.rivaconceptproject.business.exception.UserNotFoundException;

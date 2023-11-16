@@ -1,6 +1,6 @@
 package com.example.rivaconceptproject.business.impl.UserUseCaseImplTests;
 
-import com.example.rivaconceptproject.business.impl.UserUseCaseImpls.UpdateUserUseCaseImp;
+import com.example.rivaconceptproject.business.impl.userusecaseimpls.UpdateUserUseCaseImpl;
 import com.example.rivaconceptproject.domain.user.UpdateUserRequest;
 import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
@@ -20,11 +20,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class UpdateUserUseCaseImpTest {
+class UpdateUserUseCaseImplTest {
     @Mock
     UserRepository userRepositoryMock;
     @InjectMocks
-    UpdateUserUseCaseImp updateUserUserCase;
+    UpdateUserUseCaseImpl updateUserUserCase;
 
     @BeforeEach
     void settingUp(){
