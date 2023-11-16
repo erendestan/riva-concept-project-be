@@ -28,7 +28,7 @@ public class UpdateUserUseCaseImp implements UpdateUserUserCase {
     }
 
     private void updateFields(UpdateUserRequest request, UserEntity user){
-        Optional userIdOptional = userRepository.findById(request.getId());
+        Optional<UserEntity> userIdOptional = userRepository.findById(request.getId());
 
         if(userIdOptional.isPresent()){
             user.setFirstName(request.getFirstName());

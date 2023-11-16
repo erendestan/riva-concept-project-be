@@ -6,7 +6,6 @@ import com.example.rivaconceptproject.domain.Reservation.CreateReservationReques
 import com.example.rivaconceptproject.domain.Reservation.CreateReservationResponse;
 import com.example.rivaconceptproject.domain.User.User;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
-import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import jakarta.transaction.Transactional;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
     private final ReservationRepository reservationRepository;
-    private final UserRepository userRepository;
 
     @Transactional
     @Override
@@ -30,7 +28,6 @@ public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
 
         return CreateReservationResponse.builder().
                 reservationId(reservation.getReservationId())
-//                .userId(reservation.getUserId())
                 .userId(reservation.getUser().getId())
                 .reservationDate(reservation.getReservationDate())
                 .startTime(reservation.getStartTime())
@@ -39,9 +36,7 @@ public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
     }
 
     private ReservationEntity saveNewReservation(CreateReservationRequest request){
-      //  Optional<UserEntity> userEntity = userRepository.findById(request.getUser());
         ReservationEntity newReservation = ReservationEntity.builder()
-//                .userId(request.getUserId())
                 .user(getUserEntity(request.getUser()))
                 .eventType(request.getEventType())
                 .reservationCreatedDate(request.getReservationCreatedDate())
@@ -62,7 +57,6 @@ public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
                 .phoneNumber(user.getPhoneNumber())
                 .password(user.getPassword())
                 .role(user.getRole())
-//                .reservation((List<Reservation>) user.getReservation())
                 .build();
     }
 
