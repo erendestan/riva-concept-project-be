@@ -37,7 +37,7 @@ class CreateReservationUseCaseImplTest {
     private CreateReservationUseCaseImpl createReservationUseCase;
 
     @Test
-    public void testCreateReservation() {
+    void testCreateReservation() {
         User user = User.builder()
                 .id(1L)
                 .firstName("Jack")
@@ -109,7 +109,7 @@ class CreateReservationUseCaseImplTest {
     }
 
     @Test
-    public void testCreateReservationDateTaken() {
+    void testCreateReservationDateTaken() {
         User user = User.builder()
                 .id(1L)
                 .firstName("Jack")
