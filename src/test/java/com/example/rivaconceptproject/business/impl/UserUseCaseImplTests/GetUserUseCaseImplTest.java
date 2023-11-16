@@ -34,7 +34,7 @@ class GetUserUseCaseImplTest {
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
                 .phoneNumber("555666444")
-                .role(Role.Customer)
+                .role(Role.CUSTOMER)
                 .build();
         lenient().when(userRepositoryMock.findById(1L)).thenReturn(Optional.of(savedUser));
     }
@@ -51,7 +51,7 @@ class GetUserUseCaseImplTest {
         assertEquals("Kral", user.getLastName());
         assertEquals("jackkral@gmail.com", user.getEmail());
         assertEquals("555666444", user.getPhoneNumber());
-        assertEquals(Role.Customer, user.getRole());
+        assertEquals(Role.CUSTOMER, user.getRole());
 
         // Verify that the UserRepository's findById method was called with the correct userId
         verify(userRepositoryMock).findById(userId);

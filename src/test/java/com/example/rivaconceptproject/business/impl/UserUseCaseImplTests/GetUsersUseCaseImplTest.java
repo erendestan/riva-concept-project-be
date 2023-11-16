@@ -38,7 +38,7 @@ class GetUsersUseCaseImplTest {
                                 .lastName("Kral")
                                 .email("jackkral@gmail.com")
                                 .phoneNumber("555666444")
-                                .role(Role.Customer)
+                                .role(Role.CUSTOMER)
                                 .build(),
                         UserEntity.builder()
                                 .id(2L)
@@ -46,7 +46,7 @@ class GetUsersUseCaseImplTest {
                                 .lastName("Ox")
                                 .email("edwardox@gmail.com")
                                 .phoneNumber("666555111")
-                                .role(Role.Worker)
+                                .role(Role.WORKER)
                                 .build()
                 )
         );
@@ -68,7 +68,7 @@ class GetUsersUseCaseImplTest {
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
                 .phoneNumber("555666444")
-                .role(Role.Customer)
+                .role(Role.CUSTOMER)
                 .build();
 
         UserEntity expectedUser2 = UserEntity.builder()
@@ -77,7 +77,7 @@ class GetUsersUseCaseImplTest {
                 .lastName("Ox")
                 .email("edwardox@gmail.com")
                 .phoneNumber("666555111")
-                .role(Role.Worker)
+                .role(Role.WORKER)
                 .build();
 
         // Stub the userRepositoryMock's behavior
@@ -92,7 +92,7 @@ class GetUsersUseCaseImplTest {
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
                 .phoneNumber("555666444")
-                .role(Role.Customer)
+                .role(Role.CUSTOMER)
                 .build();
 
         User actualUser2 = User.builder()
@@ -101,7 +101,7 @@ class GetUsersUseCaseImplTest {
                 .lastName("Ox")
                 .email("edwardox@gmail.com")
                 .phoneNumber("666555111")
-                .role(Role.Worker)
+                .role(Role.WORKER)
                 .build();
 
 

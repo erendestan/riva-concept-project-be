@@ -34,7 +34,7 @@ class CreateUserUseCaseImplTest {
                 .email("jackkral@gmail.com")
                 .phoneNumber("555444111")
                 .password("testpassword")
-                .role(Role.Worker)
+                .role(Role.WORKER)
                 .build();
 
         UserEntity userEntity = UserEntity.builder()
@@ -76,7 +76,7 @@ class CreateUserUseCaseImplTest {
                 .email("jackkral@gmail.com")
                 .phoneNumber("555444111")
                 .password("testpassword")
-                .role(Role.Worker)
+                .role(Role.WORKER)
                 .build();
 
         when(userRepositoryMock.existsByEmail(request.getEmail()))
@@ -96,7 +96,7 @@ class CreateUserUseCaseImplTest {
                 .lastName("Kral")
                 .phoneNumber("555444111")
                 .password("testpassword")
-                .role(Role.Worker)
+                .role(Role.WORKER)
                 .build();
 
         // The createUser method should throw an exception if any of the fields are empty

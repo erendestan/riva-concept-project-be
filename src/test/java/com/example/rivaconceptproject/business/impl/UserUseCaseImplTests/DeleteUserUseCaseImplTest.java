@@ -32,7 +32,7 @@ class DeleteUserUseCaseImplTest {
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
                 .phoneNumber("555666444")
-                .role(Role.Customer)
+                .role(Role.CUSTOMER)
                 .build();
 
         UserEntity user2 = UserEntity.builder()
@@ -41,7 +41,7 @@ class DeleteUserUseCaseImplTest {
                 .lastName("Ox")
                 .email("edwardox@gmail.com")
                 .phoneNumber("666555111")
-                .role(Role.Worker)
+                .role(Role.WORKER)
                 .build();
 
         when(userRepositoryMock.findById(1L)).thenReturn(Optional.of(user1));

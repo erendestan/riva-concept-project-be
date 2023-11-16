@@ -35,7 +35,7 @@ class UpdateUserUseCaseImpTest {
                 .lastName("Kral")
                 .email("jackkral@gmail.com")
                 .phoneNumber("555666444")
-                .role(Role.Customer)
+                .role(Role.CUSTOMER)
                 .build();
         when(userRepositoryMock.findById(2L)).thenReturn(Optional.of(savedUser));
     }
@@ -48,7 +48,7 @@ class UpdateUserUseCaseImpTest {
         updateUserRequest.setLastName("Ramirez");
         updateUserRequest.setEmail("rafaelramirez@gmail.com");
         updateUserRequest.setPhoneNumber("111222333");
-        updateUserRequest.setRole(Role.Worker);
+        updateUserRequest.setRole(Role.WORKER);
 
         Optional<UserEntity> updatedUser = userRepositoryMock.findById(2L);
         updateUserUserCase.updateUser(updateUserRequest);
@@ -58,7 +58,7 @@ class UpdateUserUseCaseImpTest {
         String expectedLastName = "Ramirez";
         String expectedEmail = "rafaelramirez@gmail.com";
         String expectedPhoneNumber = "111222333";
-        Role expectedRole = Role.Worker;
+        Role expectedRole = Role.WORKER;
 
         assertEquals(expectedFirstName, actualUser.getFirstName());
         assertEquals(expectedLastName, actualUser.getLastName());

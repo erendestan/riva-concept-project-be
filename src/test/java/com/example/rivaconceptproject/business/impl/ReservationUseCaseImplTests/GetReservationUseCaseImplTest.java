@@ -40,12 +40,12 @@ class GetReservationUseCaseImplTest {
                 .email("jackkral@gmail.com")
                 .phoneNumber("555444111")
                 .password("testpassword")
-                .role(Role.Customer)
+                .role(Role.CUSTOMER)
                 .build();
 
         ReservationEntity reservationEntity = ReservationEntity.builder()
                 .user(userEntity)
-                .eventType(Event.Wedding)
+                .eventType(Event.WEDDING)
                 .reservationCreatedDate(LocalDateTime.of(2022, 11, 15, 18, 0))
                 .reservationDate(LocalDateTime.of(2023, 11, 15, 18, 0))
                 .startTime(LocalTime.of(18, 0))
@@ -65,11 +65,11 @@ class GetReservationUseCaseImplTest {
                 .email("jackkral@gmail.com")
                 .phoneNumber("555444111")
                 .password("testpassword")
-                .role(Role.Customer)
+                .role(Role.CUSTOMER)
                 .build();
         Reservation reservation = Reservation.builder()
                 .user(user)
-                .eventType(Event.Wedding)
+                .eventType(Event.WEDDING)
                 .reservationCreatedDate(LocalDateTime.of(2022, 11, 15, 18, 0))
                 .reservationDate(LocalDateTime.of(2023, 11, 15, 18, 0))
                 .startTime(LocalTime.of(18, 0))
