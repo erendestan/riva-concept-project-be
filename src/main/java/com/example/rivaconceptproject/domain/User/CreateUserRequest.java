@@ -15,9 +15,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateUserRequest {
-//    @NotNull
-//    private Long id;
-
     @NotBlank
     private String firstName;
 

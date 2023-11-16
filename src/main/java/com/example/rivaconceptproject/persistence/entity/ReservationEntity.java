@@ -20,7 +20,6 @@ public class ReservationEntity {
     @Column(name = "reservation_ID")
     private long reservationId;
 
-//    private long userId;
     @NotNull
     @ManyToOne
     @JoinColumn(name = "user_ID_FK")

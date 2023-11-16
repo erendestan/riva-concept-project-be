@@ -52,14 +52,4 @@ public class UserEntity {
     @Enumerated(EnumType.ORDINAL)
     private Role role;
 
-//    @OneToMany(mappedBy = "user")
-//    @NotNull
-//    private List<ReservationEntity> reservations;
-
-//    @OneToMany(mappedBy = "user")
-//    @NotNull
-//    @ManyToOne
-//    @JoinColumn(name = "")
-//    private List<ReservationEntity> reservations;
-//    private Reservation reservation;
 }
