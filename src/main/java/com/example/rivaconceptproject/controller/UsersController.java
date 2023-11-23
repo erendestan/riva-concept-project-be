@@ -22,11 +22,20 @@ public class UsersController {
     private final DeleteUserUseCase deleteUserUseCase;
     private final UpdateUserUserCase updateUserUserCase;
 
-    @GetMapping("{id}") //This is the getMapping for get info about specific user with id
+    @GetMapping("id/{id}") //This is the getMapping for get info about specific user with id
     public ResponseEntity<User> getUser(@PathVariable(value = "id") final long id){
         final Optional<User> userOptional = getUserUseCase.getUser(id);
         if(userOptional.isEmpty()){
             return ResponseEntity.notFound().build(); //If nothing found with that id, return not found as response
+        }
+        return ResponseEntity.ok().body(userOptional.get());
+    }
+
+    @GetMapping("email/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable(value = "email") final String email){
+        final Optional<User> userOptional = getUserUseCase.getUserByEmail(email);
+        if(userOptional.isEmpty()){
+            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok().body(userOptional.get());
     }

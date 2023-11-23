@@ -22,7 +22,7 @@ public class User {
 
     private String phoneNumber;
 
-    @JsonIgnore
+//    @JsonIgnore
     private String password;
 
     @JsonIgnore

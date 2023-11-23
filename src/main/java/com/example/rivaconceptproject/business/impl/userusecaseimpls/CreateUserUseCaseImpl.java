@@ -9,6 +9,7 @@ import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 public class CreateUserUseCaseImpl implements CreateUserUseCase {
     private final UserRepository userRepository;
     private final ReservationRepository reservationRepository;
+    private final PasswordEncoder passwordEncoder;
     @Transactional
     @Override
     public CreateUserResponse createUser(CreateUserRequest request) {
@@ -34,12 +36,15 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
     }
 
     private UserEntity saveNewUser(CreateUserRequest request){
+        String encodedPassword = passwordEncoder.encode(request.getPassword());
+
         UserEntity newUser = UserEntity.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .phoneNumber(request.getPhoneNumber())
-                .password(request.getPassword())
+                .password(encodedPassword)
+//                .password(request.getPassword())
                 .role(request.getRole())
                 .build();
 

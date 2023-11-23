@@ -90,7 +90,7 @@ class CreateUserUseCaseImplTest {
 
     @Test
     void createUserWithEmptyFields_Should_Throw_Illegal_Argument_Exception() {
-        // Create a sample request with empty fields (e.g., empty email)
+        // Empty Mail
         CreateUserRequest request = CreateUserRequest.builder()
                 .firstName("Jack")
                 .lastName("Kral")

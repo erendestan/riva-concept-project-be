@@ -24,4 +24,14 @@ public class GetUserUseCaseImpl implements GetUserUseCase {
             }
             return userOptional;
     }
+
+    @Transactional
+    @Override
+    public Optional<User> getUserByEmail(String email) {
+        Optional<User> userEmailOptional = userRepository.findByEmail(email).map(UserConverter::convert);
+        if (userEmailOptional.isEmpty()){
+            throw new UserNotFoundException("User credentials does not matched on the database!");
+        }
+        return userEmailOptional;
+    }
 }
