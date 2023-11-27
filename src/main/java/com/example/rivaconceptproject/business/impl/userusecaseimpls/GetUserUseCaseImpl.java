@@ -1,7 +1,10 @@
 package com.example.rivaconceptproject.business.impl.userusecaseimpls;
 
-import com.example.rivaconceptproject.business.userusecases.GetUserUseCase;
+import com.example.rivaconceptproject.business.exception.UnauthorizedDataAccessException;
 import com.example.rivaconceptproject.business.exception.UserNotFoundException;
+import com.example.rivaconceptproject.business.userusecases.GetUserUseCase;
+import com.example.rivaconceptproject.configuration.security.token.AccessToken;
+import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.domain.user.User;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import jakarta.transaction.Transactional;
@@ -14,10 +17,16 @@ import java.util.Optional;
 @AllArgsConstructor
 public class GetUserUseCaseImpl implements GetUserUseCase {
     private UserRepository userRepository;
+    private AccessToken requestAccessToken;
 
     @Transactional
     @Override
     public Optional<User> getUser(Long userId) {
+        if (!requestAccessToken.hasRole(Role.ADMIN.name())){
+            if (requestAccessToken.getUserId() != userId){
+                throw new UnauthorizedDataAccessException("USER_ID_NOT_FROM_LOGGED_IN_USER");
+            }
+        }
         Optional<User> userOptional = userRepository.findById(userId).map(UserConverter::convert);
             if (userOptional.isEmpty()) {
                 throw new UserNotFoundException("User with ID" + userId + "not found.");

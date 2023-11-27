@@ -43,7 +43,7 @@ public class UserEntity {
     private String phoneNumber;
 
     @NotBlank
-    @Length(min = 2, max = 50)
+    @Length(max = 100)
     @Column(name = "password")
     private String password;
 
@@ -51,5 +51,9 @@ public class UserEntity {
     @Column(name = "role")
     @Enumerated(EnumType.ORDINAL)
     private Role role;
+
+    @NotNull
+    @Column(name = "active")
+    private boolean isActive;
 
 }

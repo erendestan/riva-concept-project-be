@@ -1,7 +1,6 @@
 package com.example.rivaconceptproject.domain.user;
 
 import com.example.rivaconceptproject.domain.enums.Role;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,8 +24,10 @@ public class User {
 //    @JsonIgnore
     private String password;
 
-    @JsonIgnore
+//    @JsonIgnore
     private Role role;
+
+    private boolean isActive;
 
 //    @JsonIgnore
 //    private List<Reservation> reservation; //List of reservations
