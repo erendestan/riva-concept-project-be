@@ -2,10 +2,10 @@ package com.example.rivaconceptproject.business.impl.UserUseCaseImplTests;
 
 import com.example.rivaconceptproject.business.exception.EmailAlreadyExistsException;
 import com.example.rivaconceptproject.business.impl.userusecaseimpls.CreateUserUseCaseImpl;
+import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.domain.user.CreateUserRequest;
 import com.example.rivaconceptproject.domain.user.CreateUserResponse;
 import com.example.rivaconceptproject.domain.user.User;
-import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import org.junit.jupiter.api.Test;
@@ -13,6 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -24,10 +25,17 @@ import static org.mockito.Mockito.when;
 class CreateUserUseCaseImplTest {
     @Mock
     UserRepository userRepositoryMock;
+
+    @Mock
+    PasswordEncoder passwordEncoder;
+
     @InjectMocks
     CreateUserUseCaseImpl createUserUseCase;
+
+
     @Test
     void createUser_saves_newUserInToFakeDb(){
+
         CreateUserRequest request = CreateUserRequest.builder()
                 .firstName("Jack")
                 .lastName("Kral")
@@ -35,6 +43,7 @@ class CreateUserUseCaseImplTest {
                 .phoneNumber("555444111")
                 .password("testpassword")
                 .role(Role.WORKER)
+                .isActive(true)
                 .build();
 
         UserEntity userEntity = UserEntity.builder()
@@ -45,10 +54,15 @@ class CreateUserUseCaseImplTest {
                 .phoneNumber(request.getPhoneNumber())
                 .password(request.getPassword())
                 .role(request.getRole())
+                .isActive(request.isActive())
                 .build();
 
         when(userRepositoryMock.save(any(UserEntity.class)))
                 .thenReturn(userEntity);
+
+        when(passwordEncoder.encode(any(CharSequence.class)))
+                .thenReturn("encodedPassword");
+
 
         CreateUserResponse actualResult = createUserUseCase.createUser(request);
 
@@ -59,6 +73,7 @@ class CreateUserUseCaseImplTest {
                 .email(request.getEmail())
                 .password(request.getPassword())
                 .role(request.getRole())
+                .isActive(request.isActive())
                 .build();
 
         CreateUserResponse expectedResult = CreateUserResponse.builder().userId(user.getId()).build();
@@ -66,6 +81,7 @@ class CreateUserUseCaseImplTest {
         assertEquals(expectedResult, actualResult);
 
         verify(userRepositoryMock).save(any(UserEntity.class));
+        verify(passwordEncoder).encode("testpassword");
     }
 
     @Test
@@ -77,6 +93,7 @@ class CreateUserUseCaseImplTest {
                 .phoneNumber("555444111")
                 .password("testpassword")
                 .role(Role.WORKER)
+                .isActive(true)
                 .build();
 
         when(userRepositoryMock.existsByEmail(request.getEmail()))
@@ -97,6 +114,7 @@ class CreateUserUseCaseImplTest {
                 .phoneNumber("555444111")
                 .password("testpassword")
                 .role(Role.WORKER)
+                .isActive(true)
                 .build();
 
         // The createUser method should throw an exception if any of the fields are empty

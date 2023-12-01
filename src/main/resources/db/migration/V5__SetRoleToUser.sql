@@ -1,0 +1,1 @@
+UPDATE user set role = 2 where user_Id = 24

@@ -56,7 +56,7 @@ sonar {
 	properties {
 		property "sonar.projectKey", "rivaconcept-indproject"
 		property "sonar.projectName", "Riva Concept - Individual Project"
-//		property "sonar.qualitygate.wait", true
+		property "sonar.qualitygate.wait", true
 	}
 }
 

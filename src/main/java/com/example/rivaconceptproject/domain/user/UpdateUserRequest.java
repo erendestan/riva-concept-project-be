@@ -28,8 +28,12 @@ public class UpdateUserRequest {
     @NotNull
     private String phoneNumber;
 
-    @NotNull String password;
+    @NotNull
+    private String password;
 
     @NotNull
     private Role role;
+
+    @NotNull
+    private boolean isActive;
 }

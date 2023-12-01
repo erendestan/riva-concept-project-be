@@ -1,15 +1,14 @@
 package com.example.rivaconceptproject.domain.user;
 
 import com.example.rivaconceptproject.domain.enums.Role;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class User {
     private Long id;
 

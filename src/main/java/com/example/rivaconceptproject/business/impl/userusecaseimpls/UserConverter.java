@@ -17,6 +17,7 @@ public class UserConverter {
                 .phoneNumber(user.getPhoneNumber())
                 .password(user.getPassword())
                 .role(user.getRole())
+                .isActive(user.isActive())
                 .build();
     }
 }
