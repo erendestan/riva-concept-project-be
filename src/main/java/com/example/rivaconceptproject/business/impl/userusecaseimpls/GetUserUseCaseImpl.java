@@ -9,6 +9,7 @@ import com.example.rivaconceptproject.domain.user.User;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,6 +18,8 @@ import java.util.Optional;
 @AllArgsConstructor
 public class GetUserUseCaseImpl implements GetUserUseCase {
     private UserRepository userRepository;
+
+    @Setter
     private AccessToken requestAccessToken;
 
     @Transactional

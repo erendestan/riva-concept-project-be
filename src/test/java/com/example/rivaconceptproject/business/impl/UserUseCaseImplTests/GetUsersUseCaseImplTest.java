@@ -39,6 +39,7 @@ class GetUsersUseCaseImplTest {
                                 .email("jackkral@gmail.com")
                                 .phoneNumber("555666444")
                                 .role(Role.CUSTOMER)
+                                .isActive(true)
                                 .build(),
                         UserEntity.builder()
                                 .id(2L)
@@ -47,6 +48,7 @@ class GetUsersUseCaseImplTest {
                                 .email("edwardox@gmail.com")
                                 .phoneNumber("666555111")
                                 .role(Role.WORKER)
+                                .isActive(true)
                                 .build()
                 )
         );
@@ -69,6 +71,7 @@ class GetUsersUseCaseImplTest {
                 .email("jackkral@gmail.com")
                 .phoneNumber("555666444")
                 .role(Role.CUSTOMER)
+                .isActive(true)
                 .build();
 
         UserEntity expectedUser2 = UserEntity.builder()
@@ -78,6 +81,7 @@ class GetUsersUseCaseImplTest {
                 .email("edwardox@gmail.com")
                 .phoneNumber("666555111")
                 .role(Role.WORKER)
+                .isActive(true)
                 .build();
 
         // Stub the userRepositoryMock's behavior
@@ -93,6 +97,7 @@ class GetUsersUseCaseImplTest {
                 .email("jackkral@gmail.com")
                 .phoneNumber("555666444")
                 .role(Role.CUSTOMER)
+                .isActive(true)
                 .build();
 
         User actualUser2 = User.builder()
@@ -102,6 +107,7 @@ class GetUsersUseCaseImplTest {
                 .email("edwardox@gmail.com")
                 .phoneNumber("666555111")
                 .role(Role.WORKER)
+                .isActive(true)
                 .build();
 
 
