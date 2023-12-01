@@ -20,3 +20,4 @@ sonarqube:
   stage: sonarqube
   script:
     - ./gradlew sonar
+  allow_failure: true

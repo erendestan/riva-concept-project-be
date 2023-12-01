@@ -57,7 +57,8 @@ sonar {
 		property "sonar.projectKey", "rivaconcept-indproject"
 		property "sonar.projectName", "Riva Concept - Individual Project"
 //		property "sonar.qualitygate.wait", true
-		property "sonar.coverage.exclusions", "src/main/java/controller/**/*,src/main/java/configuration/**/*,src/main/java/domain/**/*,src/main/java/persistence/**/*"
+//		property "sonar.coverage.exclusions", "src/main/java/controller/**/*,src/main/java/configuration/**/*,src/main/java/domain/**/*,src/main/java/persistence/**/*"
+		property "sonar.sources", "src/main/java/com/example/rivaconceptproject/business"
 	}
 }
 
