@@ -1,10 +1,9 @@
 package com.example.rivaconceptproject.business.impl.userusecaseimpls;
 
-import com.example.rivaconceptproject.business.userusecases.CreateUserUseCase;
 import com.example.rivaconceptproject.business.exception.EmailAlreadyExistsException;
+import com.example.rivaconceptproject.business.userusecases.CreateUserUseCase;
 import com.example.rivaconceptproject.domain.user.CreateUserRequest;
 import com.example.rivaconceptproject.domain.user.CreateUserResponse;
-import com.example.rivaconceptproject.persistence.ReservationRepository;
 import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import jakarta.transaction.Transactional;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CreateUserUseCaseImpl implements CreateUserUseCase {
     private final UserRepository userRepository;
-    private final ReservationRepository reservationRepository;
     private final PasswordEncoder passwordEncoder;
     @Transactional
     @Override
@@ -44,7 +42,6 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
                 .email(request.getEmail())
                 .phoneNumber(request.getPhoneNumber())
                 .password(encodedPassword)
-//                .password(request.getPassword())
                 .role(request.getRole())
                 .isActive(request.isActive())
                 .build();
