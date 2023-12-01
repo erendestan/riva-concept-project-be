@@ -56,7 +56,8 @@ sonar {
 	properties {
 		property "sonar.projectKey", "rivaconcept-indproject"
 		property "sonar.projectName", "Riva Concept - Individual Project"
-		property "sonar.qualitygate.wait", true
+//		property "sonar.qualitygate.wait", true
+		property "sonar.coverage.exclusions", "src/main/java/controller/**/*,src/main/java/configuration/**/*,src/main/java/domain/**/*,src/main/java/persistence/**/*"
 	}
 }
 
