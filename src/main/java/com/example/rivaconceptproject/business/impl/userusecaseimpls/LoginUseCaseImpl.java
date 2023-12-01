@@ -43,10 +43,15 @@ public class LoginUseCaseImpl implements LoginUseCase {
     }
 
     private String generateAccessToken(Optional<UserEntity> user){
-        Long userId = user.get().getId();
-        String role = user.get().getRole().toString();
+        if(user.isPresent()){
+            Long userId = user.get().getId();
+            String role = user.get().getRole().toString();
 
-        return accessTokenEncoder.encode(
-                new AccessTokenImpl(user.get().getEmail(), userId, role));
+            return accessTokenEncoder.encode(
+                    new AccessTokenImpl(user.get().getEmail(), userId, role));
+        } else {
+            throw new IllegalArgumentException("User is not present in Optional");
+        }
+
     }
 }

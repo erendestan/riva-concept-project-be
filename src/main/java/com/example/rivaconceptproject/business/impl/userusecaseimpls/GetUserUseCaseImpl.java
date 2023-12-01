@@ -25,10 +25,8 @@ public class GetUserUseCaseImpl implements GetUserUseCase {
     @Transactional
     @Override
     public Optional<User> getUser(Long userId) {
-        if (!requestAccessToken.hasRole(Role.ADMIN.name())){
-            if (requestAccessToken.getUserId() != userId){
+        if (!requestAccessToken.hasRole(Role.ADMIN.name()) && requestAccessToken.getUserId().equals(userId)){
                 throw new UnauthorizedDataAccessException("USER_ID_NOT_FROM_LOGGED_IN_USER");
-            }
         }
         Optional<User> userOptional = userRepository.findById(userId).map(UserConverter::convert);
             if (userOptional.isEmpty()) {
