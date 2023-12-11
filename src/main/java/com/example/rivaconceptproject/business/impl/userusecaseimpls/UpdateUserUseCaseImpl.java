@@ -35,11 +35,11 @@ public class UpdateUserUseCaseImpl implements UpdateUserUserCase {
         Optional<UserEntity> userIdOptional = userRepository.findById(request.getId());
 
         // Check if the new password is different from the existing one
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            // Only update the password if it has changed
-            String encodedPassword = passwordEncoder.encode(request.getPassword());
-            user.setPassword(encodedPassword);
-        }
+//        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+//            // Only update the password if it has changed
+//            String encodedPassword = passwordEncoder.encode(request.getPassword());
+//            user.setPassword(encodedPassword);
+//        }
 
         if(userIdOptional.isPresent()){
             user.setFirstName(request.getFirstName());

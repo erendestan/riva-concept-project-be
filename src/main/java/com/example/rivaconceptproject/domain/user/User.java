@@ -1,7 +1,10 @@
 package com.example.rivaconceptproject.domain.user;
 
 import com.example.rivaconceptproject.domain.enums.Role;
+import com.example.rivaconceptproject.domain.reservation.Reservation;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -29,5 +32,5 @@ public class User {
     private boolean isActive;
 
 //    @JsonIgnore
-//    private List<Reservation> reservation; //List of reservations
+    private List<Reservation> reservation; //List of reservations
 }

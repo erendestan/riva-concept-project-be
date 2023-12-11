@@ -3,6 +3,7 @@ package com.example.rivaconceptproject.controller;
 
 import com.example.rivaconceptproject.business.reservationusecases.*;
 import com.example.rivaconceptproject.domain.reservation.*;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ public class ReservationsController {
     private final DeleteReservationUseCase deleteReservationUseCase;
     private final UpdateReservationUseCase updateReservationUseCase;
 
+    @RolesAllowed({"CUSTOMER", "ADMIN"})
     @GetMapping("{id}")
     public ResponseEntity<Reservation> getReservation(@PathVariable(value = "id") final long id){
         final Optional<Reservation> reservationOptional = getReservationUseCase.getReservation(id);
@@ -31,23 +33,27 @@ public class ReservationsController {
         return ResponseEntity.ok().body(reservationOptional.get());
     }
 
+    @RolesAllowed({"CUSTOMER", "ADMIN"})
     @GetMapping
     public ResponseEntity<GetAllReservationsResponse> getAllReservations(){
         return ResponseEntity.ok(getReservationsUseCase.getReservations());
     }
 
+    @RolesAllowed({"CUSTOMER", "ADMIN"})
     @PostMapping
     public ResponseEntity<CreateReservationResponse> createReservation(@RequestBody @Valid CreateReservationRequest request){
         CreateReservationResponse response = createReservationUseCase.createReservation(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @RolesAllowed({"CUSTOMER", "ADMIN"})
     @DeleteMapping("{reservationId}")
     public ResponseEntity<Void> deleteReservation(@PathVariable int reservationId){
         deleteReservationUseCase.deleteReservation(reservationId);
         return ResponseEntity.noContent().build();
     }
 
+    @RolesAllowed({"CUSTOMER", "ADMIN"})
     @PutMapping("{reservationId}")
     public ResponseEntity<Void> updateReservation(@PathVariable("reservationId") long id,
                                                   @RequestBody @Valid UpdateReservationRequest request){

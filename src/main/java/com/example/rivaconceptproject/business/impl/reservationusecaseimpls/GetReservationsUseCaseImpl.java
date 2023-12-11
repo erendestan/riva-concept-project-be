@@ -30,7 +30,7 @@ public class GetReservationsUseCaseImpl implements GetReservationsUseCase {
                     .build();
         }
         catch (Exception ex){
-            throw new ReservationRetrivalException("Failed to retrieve reservations");
+            throw new ReservationRetrivalException(ex.getMessage());
         }
 
     }

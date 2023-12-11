@@ -10,6 +10,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "user")
 
@@ -56,4 +59,6 @@ public class UserEntity {
     @Column(name = "active")
     private boolean isActive;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<ReservationEntity> reservation = new ArrayList<>();
 }

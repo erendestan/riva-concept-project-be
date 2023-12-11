@@ -1,11 +1,11 @@
 package com.example.rivaconceptproject.business.impl.reservationusecaseimpls;
 
-import com.example.rivaconceptproject.business.reservationusecases.CreateReservationUseCase;
 import com.example.rivaconceptproject.business.exception.ReservationDateTakenException;
+import com.example.rivaconceptproject.business.reservationusecases.CreateReservationUseCase;
 import com.example.rivaconceptproject.domain.reservation.CreateReservationRequest;
 import com.example.rivaconceptproject.domain.reservation.CreateReservationResponse;
-import com.example.rivaconceptproject.domain.user.User;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
+import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import jakarta.transaction.Transactional;
@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
     private final ReservationRepository reservationRepository;
+    private final UserRepository userRepository;
 
     @Transactional
     @Override
@@ -36,8 +37,10 @@ public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
     }
 
     private ReservationEntity saveNewReservation(CreateReservationRequest request){
+        UserEntity user = userRepository.findById(request.getUserId()).get();
         ReservationEntity newReservation = ReservationEntity.builder()
-                .user(getUserEntity(request.getUser()))
+//                .user(getUserEntity(request.getUser()))
+                .user(user)
                 .eventType(request.getEventType())
                 .reservationCreatedDate(request.getReservationCreatedDate())
                 .reservationDate(request.getReservationDate())
@@ -45,19 +48,21 @@ public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
                 .endTime(request.getEndTime())
                 .build();
 
+        user.getReservation().add(newReservation);
+
         return reservationRepository.save(newReservation);
     }
 
-    private  UserEntity getUserEntity( User user){
-        return UserEntity.builder()
-                .id(user.getId())
-                .firstName(user.getFirstName())
-                .lastName(user.getLastName())
-                .email(user.getEmail())
-                .phoneNumber(user.getPhoneNumber())
-                .password(user.getPassword())
-                .role(user.getRole())
-                .build();
-    }
+//    private  UserEntity getUserEntity( User user){
+//        return UserEntity.builder()
+//                .id(user.getId())
+//                .firstName(user.getFirstName())
+//                .lastName(user.getLastName())
+//                .email(user.getEmail())
+//                .phoneNumber(user.getPhoneNumber())
+//                .password(user.getPassword())
+//                .role(user.getRole())
+//                .build();
+//    }
 
 }
