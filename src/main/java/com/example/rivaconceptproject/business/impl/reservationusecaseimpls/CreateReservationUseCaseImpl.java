@@ -1,5 +1,6 @@
 package com.example.rivaconceptproject.business.impl.reservationusecaseimpls;
 
+import com.example.rivaconceptproject.business.exception.InvalidUserException;
 import com.example.rivaconceptproject.business.exception.ReservationDateTakenException;
 import com.example.rivaconceptproject.business.reservationusecases.CreateReservationUseCase;
 import com.example.rivaconceptproject.domain.reservation.CreateReservationRequest;
@@ -37,7 +38,7 @@ public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
     }
 
     private ReservationEntity saveNewReservation(CreateReservationRequest request){
-        UserEntity user = userRepository.findById(request.getUserId()).get();
+        UserEntity user = userRepository.findById(request.getUserId()).orElseThrow(() -> new InvalidUserException("User not found with ID: " + request.getUserId()));
         ReservationEntity newReservation = ReservationEntity.builder()
 //                .user(getUserEntity(request.getUser()))
                 .user(user)
@@ -52,17 +53,5 @@ public class CreateReservationUseCaseImpl implements CreateReservationUseCase {
 
         return reservationRepository.save(newReservation);
     }
-
-//    private  UserEntity getUserEntity( User user){
-//        return UserEntity.builder()
-//                .id(user.getId())
-//                .firstName(user.getFirstName())
-//                .lastName(user.getLastName())
-//                .email(user.getEmail())
-//                .phoneNumber(user.getPhoneNumber())
-//                .password(user.getPassword())
-//                .role(user.getRole())
-//                .build();
-//    }
 
 }

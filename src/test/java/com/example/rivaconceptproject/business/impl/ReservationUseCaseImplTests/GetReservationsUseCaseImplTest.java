@@ -48,7 +48,7 @@ class GetReservationsUseCaseImplTest {
                 .build();
 
         CreateReservationRequest request1 = CreateReservationRequest.builder()
-                .user(user)
+                .userId(1L)
                 .eventType(Event.WEDDING)
                 .reservationCreatedDate(LocalDateTime.of(2022, 11, 15, 18, 0))
                 .reservationDate(LocalDateTime.of(2023, 11, 15, 18, 0))
@@ -57,7 +57,7 @@ class GetReservationsUseCaseImplTest {
                 .build();
 
         CreateReservationRequest request2 = CreateReservationRequest.builder()
-                .user(user)
+                .userId(1L)
                 .eventType(Event.WEDDING)
                 .reservationCreatedDate(LocalDateTime.of(2022, 11, 20, 15, 0))
                 .reservationDate(LocalDateTime.of(2023, 12, 1, 15, 0))

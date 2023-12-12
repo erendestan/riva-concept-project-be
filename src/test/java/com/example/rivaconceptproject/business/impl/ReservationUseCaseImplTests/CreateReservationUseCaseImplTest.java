@@ -2,13 +2,14 @@ package com.example.rivaconceptproject.business.impl.ReservationUseCaseImplTests
 
 import com.example.rivaconceptproject.business.exception.ReservationDateTakenException;
 import com.example.rivaconceptproject.business.impl.reservationusecaseimpls.CreateReservationUseCaseImpl;
+import com.example.rivaconceptproject.domain.enums.Event;
+import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.domain.reservation.CreateReservationRequest;
 import com.example.rivaconceptproject.domain.reservation.CreateReservationResponse;
 import com.example.rivaconceptproject.domain.reservation.Reservation;
 import com.example.rivaconceptproject.domain.user.User;
-import com.example.rivaconceptproject.domain.enums.Event;
-import com.example.rivaconceptproject.domain.enums.Role;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
+import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import org.junit.jupiter.api.Test;
@@ -21,10 +22,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -32,6 +33,9 @@ import static org.mockito.Mockito.when;
 class CreateReservationUseCaseImplTest {
     @Mock
     private ReservationRepository reservationRepositoryMock;
+
+    @Mock
+    private UserRepository userRepositoryMock;
 
     @InjectMocks
     private CreateReservationUseCaseImpl createReservationUseCase;
@@ -48,21 +52,7 @@ class CreateReservationUseCaseImplTest {
                 .role(Role.CUSTOMER)
                 .build();
 
-
-        CreateReservationRequest request = CreateReservationRequest.builder()
-                .user(user)
-                .eventType(Event.WEDDING)
-                .reservationCreatedDate(LocalDateTime.of(2022, 11, 15, 18, 0))
-                .reservationDate(LocalDateTime.of(2023, 11, 15, 18, 0))
-                .startTime(LocalTime.of(18, 0))
-                .endTime(LocalTime.of(23, 0))
-                .build();
-
-
-
-     //  when(userRepositoryMock.findById(request.getUser())).thenReturn(Optional.of(user));
-
-        UserEntity userEntity = UserEntity.builder()
+        when(userRepositoryMock.findById(1L)).thenReturn(Optional.of(UserEntity.builder()
                 .id(user.getId())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
@@ -70,10 +60,28 @@ class CreateReservationUseCaseImplTest {
                 .phoneNumber(user.getPhoneNumber())
                 .password(user.getPassword())
                 .role(user.getRole())
+                .build()));
+
+        CreateReservationRequest request = CreateReservationRequest.builder()
+                .userId(1L)
+                .eventType(Event.WEDDING)
+                .reservationCreatedDate(LocalDateTime.of(2022, 11, 15, 18, 0))
+                .reservationDate(LocalDateTime.of(2023, 11, 15, 18, 0))
+                .startTime(LocalTime.of(18, 0))
+                .endTime(LocalTime.of(23, 0))
                 .build();
+
         ReservationEntity reservationEntity = ReservationEntity.builder()
                 .reservationId(1L)
-                .user(userEntity)
+                .user(UserEntity.builder()
+                        .id(user.getId())
+                        .firstName(user.getFirstName())
+                        .lastName(user.getLastName())
+                        .email(user.getEmail())
+                        .phoneNumber(user.getPhoneNumber())
+                        .password(user.getPassword())
+                        .role(user.getRole())
+                        .build())
                 .eventType(request.getEventType())
                 .reservationCreatedDate(request.getReservationCreatedDate())
                 .reservationDate(request.getReservationDate())
@@ -81,12 +89,10 @@ class CreateReservationUseCaseImplTest {
                 .endTime(request.getEndTime())
                 .build();
 
-        when(reservationRepositoryMock.save(any(ReservationEntity.class)))
+        when(reservationRepositoryMock.save(ArgumentMatchers.any(ReservationEntity.class)))
                 .thenReturn(reservationEntity);
 
         CreateReservationResponse actualResult = createReservationUseCase.createReservation(request);
-
-
 
         Reservation reservation = Reservation.builder()
                 .reservationId(1L)
@@ -98,10 +104,13 @@ class CreateReservationUseCaseImplTest {
                 .endTime(request.getEndTime())
                 .build();
 
-        CreateReservationResponse expectedResult = CreateReservationResponse.builder().reservationId(reservation.getReservationId()).userId(reservation.getUser().getId())
+        CreateReservationResponse expectedResult = CreateReservationResponse.builder()
+                .reservationId(reservation.getReservationId())
+                .userId(reservation.getUser().getId())
                 .reservationDate(reservation.getReservationDate())
                 .startTime(reservation.getStartTime())
-                .endTime(reservation.getEndTime()).build();
+                .endTime(reservation.getEndTime())
+                .build();
 
         assertEquals(expectedResult, actualResult);
 
@@ -110,36 +119,17 @@ class CreateReservationUseCaseImplTest {
 
     @Test
     void testCreateReservationDateTaken() {
-        User user = User.builder()
-                .id(1L)
-                .firstName("Jack")
-                .lastName("Kral")
-                .email("jackkral@gmail.com")
-                .phoneNumber("555444111")
-                .password("testpassword")
-                .role(Role.CUSTOMER)
-                .build();
-        // Create a sample request
         CreateReservationRequest request = CreateReservationRequest.builder()
-                .reservationDate(LocalDate.of(2023, 11, 15).atTime(18,00,00))
-                .user(user)
+                .reservationDate(LocalDate.of(2023, 11, 15).atTime(18, 0, 0))
+                .userId(1L)
                 .eventType(Event.WEDDING)
                 .reservationCreatedDate(LocalDateTime.now())
                 .startTime(LocalTime.of(18, 0))
                 .endTime(LocalTime.of(21, 0))
                 .build();
 
-        // Mock UserRepository behavior to return a UserEntity when findById is called
-        UserEntity userEntity = new UserEntity();
-        userEntity.setId(1L);
-        // Set other userEntity attributes
-//        when(userRepositoryMock.findById(1L)).thenReturn(Optional.of(userEntity));
-
-        // Mock ReservationRepository behavior to return true when existsByReservationDate is called
         when(reservationRepositoryMock.existsByReservationDate(request.getReservationDate())).thenReturn(true);
 
-        // This should throw a ReservationDateTakenException
         assertThrows(ReservationDateTakenException.class, () -> createReservationUseCase.createReservation(request));
     }
-
 }

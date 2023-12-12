@@ -43,7 +43,7 @@ class DeleteReservationUseCaseImplTest {
 
 
         CreateReservationRequest request = CreateReservationRequest.builder()
-                .user(user)
+                .userId(1L)
                 .eventType(Event.WEDDING)
                 .reservationCreatedDate(LocalDateTime.of(2022, 11, 15, 18, 0))
                 .reservationDate(LocalDateTime.of(2023, 11, 15, 18, 0))

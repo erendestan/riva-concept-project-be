@@ -90,6 +90,7 @@ class GetUsersUseCaseImplTest {
         // Call the getUsers method
         GetAllUsersResponse result = getUsersUseCase.getUsers();
 
+        // Update the expected User objects with an empty list for the reservation field
         User actualUser1 = User.builder()
                 .id(1L)
                 .firstName("Jack")
@@ -98,6 +99,7 @@ class GetUsersUseCaseImplTest {
                 .phoneNumber("555666444")
                 .role(Role.CUSTOMER)
                 .isActive(true)
+                .reservation(Collections.emptyList())
                 .build();
 
         User actualUser2 = User.builder()
@@ -108,8 +110,8 @@ class GetUsersUseCaseImplTest {
                 .phoneNumber("666555111")
                 .role(Role.WORKER)
                 .isActive(true)
+                .reservation(Collections.emptyList())
                 .build();
-
 
         // Verify that the returned UserEntity objects match the expected details
         assertEquals(actualUser1, result.getUsers().get(0));

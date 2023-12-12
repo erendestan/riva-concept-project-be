@@ -60,5 +60,5 @@ public class UserEntity {
     private boolean isActive;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<ReservationEntity> reservation = new ArrayList<>();
+    private final List<ReservationEntity> reservation = new ArrayList<>();
 }
