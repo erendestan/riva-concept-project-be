@@ -50,6 +50,10 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+	implementation 'org.springframework.boot:spring-boot-starter-websocket' //Websockets-Stomp
+	implementation 'org.webjars:sockjs-client:1.5.1' //SockJS
+
 }
 
 sonar {

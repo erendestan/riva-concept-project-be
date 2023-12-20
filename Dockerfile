@@ -1,4 +1,4 @@
-FROM gradle:7.5.0-jdk17
+FROM gradle:8.2.1-jdk17
 WORKDIR /opt/app
 COPY ./build/libs/RivaConceptProject-0.0.1-SNAPSHOT.jar ./
 

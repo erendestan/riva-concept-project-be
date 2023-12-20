@@ -11,4 +11,6 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
     boolean existsByReservationDate(LocalDateTime reservationDate);
     Optional<ReservationEntity> findByReservationId(long reservationId);
 
+    Optional<ReservationEntity> findByReservationDate(LocalDateTime reservationDate);
+
 }

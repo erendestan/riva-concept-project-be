@@ -15,7 +15,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/reservations")
 @AllArgsConstructor
-//@CrossOrigin(origins = "http://127.0.0.1:5173/")
+@CrossOrigin(origins = "http://127.0.0.1:5173/")
 public class ReservationsController {
     private final GetReservationUseCase getReservationUseCase;
     private final GetReservationsUseCase getReservationsUseCase;
@@ -32,7 +32,6 @@ public class ReservationsController {
         }
         return ResponseEntity.ok().body(reservationOptional.get());
     }
-
     @RolesAllowed({"CUSTOMER", "ADMIN"})
     @GetMapping
     public ResponseEntity<GetAllReservationsResponse> getAllReservations(){

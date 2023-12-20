@@ -4,10 +4,12 @@ import com.example.rivaconceptproject.business.reservationusecases.GetReservatio
 import com.example.rivaconceptproject.business.exception.ReservationNotFoundException;
 import com.example.rivaconceptproject.domain.reservation.Reservation;
 import com.example.rivaconceptproject.persistence.ReservationRepository;
+import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -28,4 +30,11 @@ public class GetReservationUseCaseImpl implements GetReservationUseCase {
     public Optional<Reservation> getReservationByUserId(long userId) {
         return reservationRepository.findByReservationId(userId).map(ReservationConverter::convert);
     }
+
+    @Transactional
+    @Override
+    public Optional<ReservationEntity> findByReservationDate(LocalDateTime reservationDate){
+        return reservationRepository.findByReservationDate(reservationDate);
+    }
+
 }

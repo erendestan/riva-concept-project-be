@@ -2,7 +2,6 @@ package com.example.rivaconceptproject.domain.reservation;
 
 import com.example.rivaconceptproject.domain.enums.Event;
 import com.example.rivaconceptproject.domain.user.User;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +16,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 public class Reservation {
     private long reservationId;
-    @JsonIgnore
+//    @JsonIgnore
     private User user;
 //    private long userId; //Change it to your User object
     private Event eventType;
