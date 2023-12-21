@@ -1,6 +1,9 @@
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
+services:
+  - docker:dind
+
 stages:
   - build
   - test
@@ -9,15 +12,40 @@ stages:
 build:
   stage: build
   script:
-    - ./gradlew assemble
+    - docker build -t rivaproject-backend .
 
 test:
   stage: test
   script:
-    - ./gradlew test
+    - docker run -e GRADLE_OPTS="$GRADLE_OPTS" rivaproject-backend ./gradlew test
 
 sonarqube:
   stage: sonarqube
   script:
-    - ./gradlew sonar
+    - docker run -e GRADLE_OPTS="$GRADLE_OPTS" rivaproject-backend ./gradlew sonar
   allow_failure: true
+
+
+#variables:
+#  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+#
+#stages:
+#  - build
+#  - test
+#  - sonarqube
+#
+#build:
+#  stage: build
+#  script:
+#    - ./gradlew assemble
+#
+#test:
+#  stage: test
+#  script:
+#    - ./gradlew test
+#
+#sonarqube:
+#  stage: sonarqube
+#  script:
+#    - ./gradlew sonar
+#  allow_failure: true
