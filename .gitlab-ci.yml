@@ -33,6 +33,8 @@ stages:
   - build
   - test
   - sonarqube
+  - deploy_dev
+  - deploy_staging
 
 build:
   stage: build
@@ -49,3 +51,15 @@ sonarqube:
   script:
     - ./gradlew sonar
   allow_failure: true
+
+deploy_dev:
+  stage: deploy_dev
+  script:
+    - docker build -t rivaproject-backend:dev .
+    - docker run -d -p 8080:8080 --name=riva-backend-dev rivaproject-backend:dev
+
+deploy_staging:
+  stage: deploy_staging
+  script:
+    - docker build -t rivaproject-backend:staging .
+    - docker run -d -p 8081:8080 --name=riva-backend-staging rivaproject-backend:staging
