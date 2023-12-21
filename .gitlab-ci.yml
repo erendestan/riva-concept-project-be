@@ -1,31 +1,3 @@
-#variables:
-#  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
-#
-#services:
-#  - docker:dind
-#
-#stages:
-#  - build
-#  - test
-#  - sonarqube
-#
-#build:
-#  stage: build
-#  script:
-#    - docker build -t rivaproject-backend .
-#
-#test:
-#  stage: test
-#  script:
-#    - docker run -e GRADLE_OPTS="$GRADLE_OPTS" rivaproject-backend ./gradlew test
-#
-#sonarqube:
-#  stage: sonarqube
-#  script:
-#    - docker run -e GRADLE_OPTS="$GRADLE_OPTS" rivaproject-backend ./gradlew sonar
-#  allow_failure: true
-#
-
 variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
@@ -50,12 +22,6 @@ sonarqube:
   script:
     - ./gradlew sonar
   allow_failure: true
-
-#deploy_dev:
-#  stage: deploy_dev
-#  script:
-#    - docker build -t rivaproject-backend:dev .
-#    - docker run -d -p 8080:8080 --name=riva-backend-dev rivaproject-backend:dev
 
 deploy:
   stage: deploy
