@@ -2,6 +2,7 @@ package com.example.rivaconceptproject.controller;
 
 
 import com.example.rivaconceptproject.business.reservationusecases.*;
+import com.example.rivaconceptproject.domain.enums.Event;
 import com.example.rivaconceptproject.domain.reservation.*;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @RestController
@@ -22,6 +24,7 @@ public class ReservationsController {
     private final CreateReservationUseCase createReservationUseCase;
     private final DeleteReservationUseCase deleteReservationUseCase;
     private final UpdateReservationUseCase updateReservationUseCase;
+    private final GetFilteredReservationsUseCase getFilteredReservationsUseCase;
 
     @RolesAllowed({"CUSTOMER", "ADMIN"})
     @GetMapping("{id}")
@@ -59,5 +62,21 @@ public class ReservationsController {
         request.setReservationId(id);
         updateReservationUseCase.updateReservation(request);
         return ResponseEntity.noContent().build();
+    }
+
+    @RolesAllowed({"CUSTOMER", "ADMIN"})
+    @GetMapping("/filtered")
+    public ResponseEntity<GetFilteredReservationsResponse> getFilteredReservations(
+            @RequestParam(name = "eventType", required = false) Event eventType,
+            @RequestParam(name = "startDate", required = false) LocalDateTime startDate,
+            @RequestParam(name = "endDate", required = false) LocalDateTime endDate) {
+
+        GetFilteredReservationsRequest request = GetFilteredReservationsRequest.builder()
+                .eventType(eventType)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+
+        return ResponseEntity.ok(getFilteredReservationsUseCase.getFilteredReservations(request));
     }
 }

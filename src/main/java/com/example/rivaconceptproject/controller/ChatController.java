@@ -23,9 +23,27 @@ public class ChatController {
     }
 
     @MessageMapping("/private-message")
-    private ChatMessage receivePrivateMessage(@Payload ChatMessage message){
-        simpMessagingTemplate.convertAndSendToUser(message.getReceiverName(), "/private", message); // /user/Eren/private
-        return message;
+    private void receivePrivateMessage(@Payload ChatMessage message) {
+        if ("designdocument@gmail.com".equals(message.getReceiverName())) {
+            // Handle system messages separately
+            simpMessagingTemplate.convertAndSendToUser("designdocument@gmail.com", "/private", message);
+        } else {
+            // Handle regular private messages
+            simpMessagingTemplate.convertAndSendToUser(message.getReceiverName(), "/private", message);
+        }
     }
+
+//    @MessageMapping("/private-message")
+//    private ChatMessage receivePrivateMessage(@Payload ChatMessage message){
+//        simpMessagingTemplate.convertAndSendToUser(message.getReceiverName(), "/private", message); // /user/Eren/private
+//        return message;
+//    }
+
+//    @MessageMapping("/system-message")
+//    @SendTo("/user/designdocument@gmail.com/private")
+//    private ChatMessage receiveSystemMessage(@Payload ChatMessage message) {
+//        // Handle system messages here
+//        return message;
+//    }
 
 }

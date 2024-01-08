@@ -53,6 +53,7 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-websocket' //Websockets-Stomp
 	implementation 'org.webjars:sockjs-client:1.5.1' //SockJS
+	implementation 'org.springframework:spring-messaging' //ChannelInterceptorAdapter
 
 }
 
