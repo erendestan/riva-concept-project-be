@@ -1,5 +1,6 @@
 package com.example.rivaconceptproject.persistence;
 
+import com.example.rivaconceptproject.domain.enums.Event;
 import com.example.rivaconceptproject.persistence.entity.ReservationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -25,7 +26,7 @@ public interface ReservationRepository extends JpaRepository<ReservationEntity, 
             "AND (:startDateFilter IS NULL OR r.reservationDate >= :startDateFilter) " +
             "AND (:endDateFilter IS NULL OR r.reservationDate <= :endDateFilter)")
     Optional<List<ReservationEntity>> findFilteredReservations(
-            @Param("eventTypeFilter") String eventTypeFilter,
+            @Param("eventTypeFilter") Event eventTypeFilter,
             @Param("startDateFilter") LocalDateTime startDateFilter,
             @Param("endDateFilter") LocalDateTime endDateFilter
     );

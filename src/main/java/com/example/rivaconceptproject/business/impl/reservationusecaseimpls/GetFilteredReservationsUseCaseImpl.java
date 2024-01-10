@@ -20,8 +20,20 @@ public class GetFilteredReservationsUseCaseImpl implements GetFilteredReservatio
     @Override
     public GetFilteredReservationsResponse getFilteredReservations(GetFilteredReservationsRequest request) {
         try {
+            if (request.getEventType() == null && request.getStartDate() == null && request.getEndDate() == null) {
+                // No filter criteria provided, return all reservations
+                List<Reservation> reservations = reservationRepository.findAll()
+                        .stream()
+                        .map(ReservationConverter::convert)
+                        .toList();
+
+                return GetFilteredReservationsResponse.builder()
+                        .filteredReservations(reservations)
+                        .build();
+            }
+
             List<Reservation> filteredReservations = reservationRepository.findFilteredReservations(
-                            request.getEventType().toString(),
+                            request.getEventType(),
                             request.getStartDate(),
                             request.getEndDate()
                     ).orElse(List.of()).stream()
@@ -33,7 +45,7 @@ public class GetFilteredReservationsUseCaseImpl implements GetFilteredReservatio
                     .build();
         } catch (Exception ex) {
             // Handle exceptions accordingly (e.g., log the error, throw a custom exception)
-            throw new ReservationRetrivalException("Error retrieving filtered reservations");
+            throw new ReservationRetrivalException(ex.getMessage());
         }
     }
 }

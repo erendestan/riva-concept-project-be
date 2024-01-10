@@ -31,15 +31,6 @@ public class GetUserUseCaseImpl implements GetUserUseCase {
             }
         }
 
-//        if (!requestAccessToken.hasRole(Role.ADMIN.name()) || requestAccessToken.getUserId() != userId){
-//                throw new UnauthorizedDataAccessException("USER_ID_NOT_FROM_LOGGED_IN_USER");
-//        }
-
-        //        if (!requestAccessToken.hasRole(Role.ADMIN.name())){
-//            if (requestAccessToken.getUserId() != userId){
-//                throw new UnauthorizedDataAccessException("USER_ID_NOT_FROM_LOGGED_IN_USER");
-//            }
-//        }
         Optional<User> userOptional = userRepository.findById(userId).map(UserConverter::convert);
             if (userOptional.isEmpty()) {
                 throw new UserNotFoundException("User with ID" + userId + "not found.");

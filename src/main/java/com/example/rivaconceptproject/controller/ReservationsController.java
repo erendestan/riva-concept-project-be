@@ -7,6 +7,7 @@ import com.example.rivaconceptproject.domain.reservation.*;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,12 +65,29 @@ public class ReservationsController {
         return ResponseEntity.noContent().build();
     }
 
-    @RolesAllowed({"CUSTOMER", "ADMIN"})
+//    @RolesAllowed({"CUSTOMER", "ADMIN"})
+//    @GetMapping("/filtered")
+//    public ResponseEntity<GetFilteredReservationsResponse> getFilteredReservations(
+//            @RequestParam(name = "eventType", required = false) Event eventType,
+//            @RequestParam(name = "startDate", required = false) LocalDateTime startDate,
+//            @RequestParam(name = "endDate", required = false) LocalDateTime endDate) {
+//
+//        GetFilteredReservationsRequest request = GetFilteredReservationsRequest.builder()
+//                .eventType(eventType)
+//                .startDate(startDate)
+//                .endDate(endDate)
+//                .build();
+//
+//        return ResponseEntity.ok(getFilteredReservationsUseCase.getFilteredReservations(request));
+//    }
+
     @GetMapping("/filtered")
     public ResponseEntity<GetFilteredReservationsResponse> getFilteredReservations(
             @RequestParam(name = "eventType", required = false) Event eventType,
-            @RequestParam(name = "startDate", required = false) LocalDateTime startDate,
-            @RequestParam(name = "endDate", required = false) LocalDateTime endDate) {
+            @RequestParam(name = "startDate", required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
+            @RequestParam(name = "endDate", required = false)
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime endDate) {
 
         GetFilteredReservationsRequest request = GetFilteredReservationsRequest.builder()
                 .eventType(eventType)

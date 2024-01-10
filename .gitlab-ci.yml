@@ -30,4 +30,4 @@ deploy:
     - docker build -t rivaproject-backend .
     - docker stop riva-backend-staging
     - docker rm riva-backend-staging
-    - docker run -d -p 8080:8080 --net=docker_riva_network_staging --env spring_profiles_active=staging --name=riva-backend-staging rivaproject-backend
+    - docker run -d -p 8090:8080 --net=docker_riva_network_staging --env spring_profiles_active=staging --name=riva-backend-staging rivaproject-backend
