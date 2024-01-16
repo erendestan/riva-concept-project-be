@@ -22,4 +22,17 @@ public class UserConverter {
                 .isActive(user.isActive())
                 .build();
     }
+
+    public static UserEntity convertUserEntity(User user){
+        return UserEntity.builder()
+                .id(user.getId())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .email(user.getEmail())
+                .phoneNumber(user.getPhoneNumber())
+                .password(user.getPassword())
+                .role(user.getRole())
+                .isActive(user.isActive())
+                .build();
+    }
 }

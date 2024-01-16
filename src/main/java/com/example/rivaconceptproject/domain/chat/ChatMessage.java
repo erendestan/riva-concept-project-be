@@ -7,14 +7,16 @@ import lombok.*;
 //@AllArgsConstructor
 //@Data
 //@ToString
+@Data
+@Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 public class ChatMessage {
-    private String senderName;
-    private String receiverName;
+    private String senderEmail;
+    private String receiverEmail;
     private String message;
     private String date;
     private Status status;
