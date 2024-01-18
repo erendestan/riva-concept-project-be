@@ -1,7 +1,7 @@
 package com.example.rivaconceptproject.controller;
 
 
-import com.example.rivaconceptproject.business.impl.chatmessageusecase.SaveChatMessageUseCase;
+import com.example.rivaconceptproject.business.chatmessageusecase.SaveChatMessageUseCase;
 import com.example.rivaconceptproject.domain.chat.ChatMessage;
 import lombok.AllArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;

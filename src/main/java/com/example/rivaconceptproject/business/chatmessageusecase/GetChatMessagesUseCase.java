@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.business.impl.chatmessageusecase;
+package com.example.rivaconceptproject.business.chatmessageusecase;
 
 import com.example.rivaconceptproject.domain.chat.ChatMessage;
 

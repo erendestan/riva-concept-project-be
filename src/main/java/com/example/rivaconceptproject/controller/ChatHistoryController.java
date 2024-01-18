@@ -1,6 +1,6 @@
 package com.example.rivaconceptproject.controller;
 
-import com.example.rivaconceptproject.business.impl.chatmessageusecase.GetChatMessagesUseCase;
+import com.example.rivaconceptproject.business.chatmessageusecase.GetChatMessagesUseCase;
 import com.example.rivaconceptproject.domain.chat.ChatMessage;
 import jakarta.annotation.security.RolesAllowed;
 import lombok.AllArgsConstructor;

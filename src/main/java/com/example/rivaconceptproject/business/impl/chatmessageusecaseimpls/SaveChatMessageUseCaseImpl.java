@@ -1,7 +1,7 @@
 package com.example.rivaconceptproject.business.impl.chatmessageusecaseimpls;
 
 import com.example.rivaconceptproject.business.exception.ErrorSavingMessageException;
-import com.example.rivaconceptproject.business.impl.chatmessageusecase.SaveChatMessageUseCase;
+import com.example.rivaconceptproject.business.chatmessageusecase.SaveChatMessageUseCase;
 import com.example.rivaconceptproject.domain.chat.ChatMessage;
 import com.example.rivaconceptproject.persistence.ChatMessageRepository;
 import com.example.rivaconceptproject.persistence.UserRepository;
