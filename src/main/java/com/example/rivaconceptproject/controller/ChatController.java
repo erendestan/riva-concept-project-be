@@ -22,7 +22,6 @@ public class ChatController {
 
     @MessageMapping("/private-message")
     private void receivePrivateMessage(@Payload ChatMessage message) {
-//        saveChatMessageToDatabase(message);
 
         saveChatMessageUseCase.saveChatMessage(message);
 
