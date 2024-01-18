@@ -8,11 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ChatMessageRepository extends JpaRepository<ChatMessageEntity, Long> {
-
-//    List<ChatMessageEntity> findAllByReceiverEmail_EmailOrSenderEmail_Email(String email);
-
-//    List<ChatMessageEntity> findBySenderOrReceiverEmail(String email);
-
     @Query("SELECT cm FROM ChatMessageEntity cm WHERE cm.senderEmail.email = :email OR cm.receiverEmail.email = :email")
     List<ChatMessageEntity> findBySenderOrReceiverEmail(@Param("email") String email);
 }
