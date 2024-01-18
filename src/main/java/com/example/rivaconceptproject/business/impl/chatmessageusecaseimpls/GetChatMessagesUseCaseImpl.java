@@ -1,5 +1,6 @@
-package com.example.rivaconceptproject.business.impl;
+package com.example.rivaconceptproject.business.impl.chatmessageusecaseimpls;
 
+import com.example.rivaconceptproject.business.impl.chatmessageusecase.GetChatMessagesUseCase;
 import com.example.rivaconceptproject.domain.chat.ChatMessage;
 import com.example.rivaconceptproject.persistence.ChatMessageRepository;
 import jakarta.transaction.Transactional;
@@ -10,7 +11,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class GetChatMessagesUseCaseImpl implements GetChatMessagesUseCase{
+public class GetChatMessagesUseCaseImpl implements GetChatMessagesUseCase {
     private final ChatMessageRepository chatMessageRepository;
     @Transactional
     @Override

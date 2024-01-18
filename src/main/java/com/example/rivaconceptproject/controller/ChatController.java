@@ -1,13 +1,11 @@
 package com.example.rivaconceptproject.controller;
 
 
-import com.example.rivaconceptproject.business.impl.GetChatMessagesUseCase;
 import com.example.rivaconceptproject.business.impl.userusecaseimpls.UserConverter;
 import com.example.rivaconceptproject.business.userusecases.GetUserUseCase;
 import com.example.rivaconceptproject.domain.chat.ChatMessage;
 import com.example.rivaconceptproject.domain.user.User;
 import com.example.rivaconceptproject.persistence.ChatMessageRepository;
-import com.example.rivaconceptproject.persistence.UserRepository;
 import com.example.rivaconceptproject.persistence.entity.ChatMessageEntity;
 import com.example.rivaconceptproject.persistence.entity.UserEntity;
 import lombok.AllArgsConstructor;
@@ -26,22 +24,11 @@ import java.util.Optional;
 @RestController
 public class ChatController {
 
-    private final GetChatMessagesUseCase getChatMessagesUseCase;
-
     private final SimpMessagingTemplate simpMessagingTemplate;
 
     private final ChatMessageRepository chatMessageRepository;
 
-    private final UserRepository userRepository;
-
     private final GetUserUseCase getUserUseCase;
-
-//    @MessageMapping("/message") // /app/message
-//    @SendTo("/chatroom/public")
-//    private ChatMessage receivePublicMessage(@Payload ChatMessage message){
-//        return message;
-//    }
-
 
     @MessageMapping("/private-message")
     private void receivePrivateMessage(@Payload ChatMessage message) {
@@ -89,38 +76,5 @@ public class ChatController {
         return chatMessageEntity;
     }
 
-    //Get Mapping for Chat History
-//    @RolesAllowed({"CUSTOMER", "ADMIN"})
-//    @GetMapping("/email/{email}")
-//    public ResponseEntity<List<ChatMessage>> getChatHistory(@PathVariable(value = "email") final String email){
-//        final List<ChatMessage> chatMessages = getChatMessagesUseCase.getChatMessages(email);
-//
-//        return ResponseEntity.ok().body(chatMessages);
-//    }
-
-
-
-//    @MessageMapping("/private-message")
-//    private void receivePrivateMessage(@Payload ChatMessage message) {
-//        try {
-//            System.out.println("Received private message:");
-//            System.out.println("Sender: " + message.getSenderEmail());
-//            System.out.println("Receiver: " + message.getReceiverEmail());
-//            System.out.println("Message: " + message.getMessage());
-//
-//            if ("designdocument@gmail.com".equals(message.getReceiverEmail())) {
-//                // Handle system messages separately
-//                simpMessagingTemplate.convertAndSendToUser("designdocument@gmail.com", "/private", message);
-//                System.out.println("Sent message to designdocument@gmail.com");
-//            } else {
-//                // Handle regular private messages
-//                simpMessagingTemplate.convertAndSendToUser(message.getReceiverEmail(), "/private", message);
-//                System.out.println("Sent message to " + message.getReceiverEmail());
-//            }
-//        } catch (Exception e) {
-//            System.err.println("Error processing private message: " + e.getMessage());
-//            e.printStackTrace();
-//        }
-//    }
 
 }

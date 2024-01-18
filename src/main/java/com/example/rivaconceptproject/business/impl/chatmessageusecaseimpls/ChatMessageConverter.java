@@ -1,4 +1,4 @@
-package com.example.rivaconceptproject.business.impl;
+package com.example.rivaconceptproject.business.impl.chatmessageusecaseimpls;
 
 import com.example.rivaconceptproject.domain.chat.ChatMessage;
 import com.example.rivaconceptproject.persistence.entity.ChatMessageEntity;
