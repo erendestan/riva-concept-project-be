@@ -16,16 +16,13 @@ public class GetChatMessagesUseCaseImpl implements GetChatMessagesUseCase {
     @Transactional
     @Override
     public List<ChatMessage> getChatMessages(String email) {
-        try{
-            List<ChatMessage> chatMessages = chatMessageRepository.findBySenderOrReceiverEmail(email)
+        try {
+            return chatMessageRepository.findBySenderOrReceiverEmail(email)
                     .stream()
                     .map(ChatMessageConverter::convert)
                     .toList();
-
-            return chatMessages;
-        }
-        catch (Exception ex){
-            throw (ex);
+        } catch (Exception ex) {
+            throw ex;
         }
     }
 }
