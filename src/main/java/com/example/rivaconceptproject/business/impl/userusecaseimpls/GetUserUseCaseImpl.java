@@ -26,7 +26,7 @@ public class GetUserUseCaseImpl implements GetUserUseCase {
     @Override
     public Optional<User> getUser(Long userId) {
         if (!requestAccessToken.hasRole(Role.ADMIN.name())){
-            if (!requestAccessToken.getUserId().equals(userId)){ //if (requestAccessToken.getUserId() != userId)
+            if (!requestAccessToken.getUserId().equals(userId)){
                 throw new UnauthorizedDataAccessException("USER_ID_NOT_FROM_LOGGED_IN_USER");
             }
         }
